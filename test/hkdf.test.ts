@@ -23,6 +23,7 @@ const HKDF_VECTORS = [
       '3cb25f25faacd57a90434f64d0362f2a2d2d0a90cf1a5a4c5db02d56ecc4c5bf34007208d5b887185865',
     ),
   },
+
   {
     IKM: fromHex(
       '000102030405060708090a0b0c0d0e0f' +
@@ -58,36 +59,7 @@ const HKDF_VECTORS = [
         '1d87',
     ),
   },
-  // {
-  //   IKM: fromHex('0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b'),
-  //   salt: fromHex(''),
-  //   info: fromHex(''),
-  //   L: 42,
-  //   PRK: fromHex(
-  //     '19ef24a32c717b167f33a91d6f648bdf96596776afdb6377ac434c1c293ccb04',
-  //   ),
-  //   OKM: fromHex(
-  //     '8da4e775a563c18f715f802a063c5a31' +
-  //       'b8a11f5c5ee1879ec3454e5f3c738d2d' +
-  //       '9d201395faa4b61a96c8',
-  //   ),
-  // },
-  // {
-  //   IKM: fromHex('0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b'),
-  //   salt: fromHex(''),
-  //   info: fromHex(''),
-  //   L: 42,
-  //   PRK: fromHex(
-  //     '19ef24a32c717b167f33a91d6f648bdf96596776afdb6377ac434c1c293ccb04',
-  //   ),
-  //   OKM: fromHex(
-  //     '8da4e775a563c18f715f802a063c5a31' +
-  //       'b8a11f5c5ee1879ec3454e5f3c738d2d' +
-  //       '9d201395faa4b61a96c8',
-  //   ),
-  // },
 
-  // this is some bullshit I got from Firefox
   {
     IKM: decodeBase64Url('wV0sNSvW4PviyYKiaVTtPANmaSF7US5g3A5yj4bZeYw'),
     salt: decodeBase64Url('4CQCKEyyOT_LysC17rsMXQ'),
@@ -99,7 +71,6 @@ const HKDF_VECTORS = [
     OKM: decodeBase64Url('2V6MO66BhBHp0rOUDacExQ'),
   },
 
-  // this is some bullshit I got from Firefox
   {
     IKM: decodeBase64Url('R4HYOYDZQ5hjpM9OpDh_a_TnNRGapYeSRFPt90gGhdo'),
     salt: decodeBase64Url('4CQCKEyyOT_LysC17rsMXQ'),

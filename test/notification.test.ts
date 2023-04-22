@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { decodeBase64Url, encodeBase64Url } from '../lib/base64.js';
 import { encryptNotification } from '../lib/encrypt.js';
 import { vapidHeaders } from '../lib/vapid.js';
@@ -45,11 +45,20 @@ vi.mock('../lib/local-keys.js', () => ({
 }));
 
 describe('', () => {
+  beforeEach(() => {
+    // tell vitest we use mocked time
+    vi.useFakeTimers();
+  });
+
   afterEach(() => {
+    // restoring date after each test run
+    vi.useRealTimers();
     vi.clearAllMocks();
   });
 
   test('encryptNotification', async () => {
+    vi.setSystemTime(new Date(2000, 1, 1, 13));
+
     const subscription = fakeSubscriptions.test;
 
     const encryptResult = await encryptNotification(
@@ -57,15 +66,15 @@ describe('', () => {
       new TextEncoder().encode('This is test data.'),
     );
 
-    const { headers } = await vapidHeaders(subscription, fakeVapid);
+    const vapid = await vapidHeaders(subscription, fakeVapid);
 
     const requestInfo = {
       headers: {
-        ...headers,
+        ...vapid.headers,
 
         'crypto-key': `keyid=p256dh;dh=${encodeBase64Url(
           encryptResult.serverPublic,
-        )};${headers['crypto-key']}`,
+        )};${vapid.headers['crypto-key']}`,
 
         encryption: `keyid=p256dh;salt=${encodeBase64Url(encryptResult.salt)}`,
 
@@ -77,6 +86,11 @@ describe('', () => {
       body: encryptResult.ciphertext,
     } satisfies RequestInit;
 
-    expect(requestInfo).toBeTruthy();
+    expect(requestInfo.body).toMatchSnapshot();
+    expect(requestInfo.method).toMatchSnapshot();
+
+    const { authorization, ...headers } = requestInfo.headers;
+    expect(headers).toMatchSnapshot();
+    expect(authorization.match(/^(WebPush \w+\.\w+?\.)/)).toMatchSnapshot();
   });
 });
