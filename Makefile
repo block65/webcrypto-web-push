@@ -17,8 +17,8 @@ test:
 node_modules: package.json
 	pnpm install
 
-dist: node_modules tsconfig.json $(SRCS)
-	pnpm tsc
+dist: node_modules tsconfig-lib.json $(SRCS)
+	pnpm tsc -b tsconfig-lib.json
 
 .PHONY: dist-watch
 dist-watch:
