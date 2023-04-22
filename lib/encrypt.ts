@@ -1,5 +1,5 @@
 import { deriveClientKeys } from './client-keys.js';
-import { hkdf2 as hkdf } from './hkdf.js';
+import { hkdf } from './hkdf.js';
 import { createInfo, createInfo2 } from './info.js';
 import { ecJwkToBytes } from './jwk-to-bytes.js';
 import { generateLocalKeys } from './local-keys.js';
