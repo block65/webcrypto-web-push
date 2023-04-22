@@ -11,6 +11,9 @@
       "default": "./dist/lib/main.js"
     }
   },
+  "scripts": {
+    "preversion": "make test"
+  },
   "exports": {
     ".": {
       "types": "./dist/lib/main.d.ts",
