@@ -1,4 +1,4 @@
-export type { PushNotification, PushSubscription } from './types.js';
+export type { PushMessage, PushSubscription } from './types.js';
 
 export { encryptNotification } from './encrypt.js';
 

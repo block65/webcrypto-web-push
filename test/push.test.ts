@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 import { buildPushPayload } from '../lib/main.js';
-import { type PushNotification } from '../lib/types.js';
+import { type PushMessage } from '../lib/types.js';
 import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 
 describe('Payload', () => {
   test('Fake Subscription', async () => {
-    const notification: PushNotification = {
+    const message: PushMessage = {
       data: 'Some text',
       options: {
         ttl: 60,
@@ -18,7 +18,7 @@ describe('Payload', () => {
 
     const subscription = fakeSubscriptions.test;
 
-    const init = await buildPushPayload(notification, subscription, fakeVapid);
+    const init = await buildPushPayload(message, subscription, fakeVapid);
     const res = await fetch(subscription.endpoint, init);
 
     await expect(res.text()).resolves.toMatchInlineSnapshot('""');

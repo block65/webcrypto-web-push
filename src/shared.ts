@@ -1,5 +1,5 @@
 import {
-  type PushNotification,
+  type PushMessage,
   type PushSubscription,
   type VapidKeys,
 } from '../lib/main.js';
@@ -22,8 +22,8 @@ export const subscription: PushSubscription = {
   },
 };
 
-export const notification: PushNotification = {
-  data: 'You have a new message!',
+export const message: PushMessage = {
+  data: "You've got mail!",
   options: {
     ttl: 60,
   },

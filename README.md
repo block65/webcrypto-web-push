@@ -22,9 +22,9 @@ pnpm add @block65/webcrypto-web-push
 ```typescript
 import {
   type PushSubscription,
-  type Notification,
+  type PushMessage,
   type VapidKeys
-  sendPushNotification,
+  buildPushPayload,
 } from '@block65/webcrypto-web-push';
 
 const vapid: VapidKeys = {
@@ -33,7 +33,6 @@ const vapid: VapidKeys = {
   privateKey: env.VAPID_SERVER_PRIVATE_KEY,
 };
 
-// You would probably get a subscription object from the datastore
 const subscription: PushSubscription = {
   endpoint: 'https://fcm.googleapis.com/fcm/send/...',
   expirationTime: null,
@@ -43,15 +42,15 @@ const subscription: PushSubscription = {
   },
 };
 
-const notification: Notification = {
-  body: 'You have a new message!',
+const message: PushMessage = {
+  body: "You've got mail!",
   options: {
     ttl: 60,
   },
 };
 
 // send the payload using your favourite fetch library
-const init = await buildPushPayload(notification, subscription, vapid);
+const init = await buildPushPayload(message, subscription, vapid);
 const res = await fetch(subscription.endpoint, init);
 ```
 

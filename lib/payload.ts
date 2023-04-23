@@ -1,10 +1,10 @@
 import { encodeBase64Url } from './base64.js';
 import { encryptNotification } from './encrypt.js';
-import type { PushNotification, PushSubscription } from './types.js';
+import type { PushMessage, PushSubscription } from './types.js';
 import { vapidHeaders, type VapidKeys } from './vapid.js';
 
 export async function buildPushPayload(
-  notification: PushNotification,
+  message: PushMessage,
   subscription: PushSubscription,
   vapid: VapidKeys,
 ) {
@@ -14,10 +14,9 @@ export async function buildPushPayload(
     subscription,
     new TextEncoder().encode(
       // if its a primitive, convert to string, otherwise stringify
-      typeof notification.data === 'string' ||
-        typeof notification.data === 'number'
-        ? notification.data.toString()
-        : JSON.stringify(notification.data),
+      typeof message.data === 'string' || typeof message.data === 'number'
+        ? message.data.toString()
+        : JSON.stringify(message.data),
     ),
   );
 
@@ -31,12 +30,12 @@ export async function buildPushPayload(
 
       encryption: `keyid=p256dh;salt=${encodeBase64Url(encrypted.salt)}`,
 
-      ttl: (notification.options?.ttl || 60).toString(),
-      ...(notification.options?.urgency && {
-        urgency: notification.options.urgency,
+      ttl: (message.options?.ttl || 60).toString(),
+      ...(message.options?.urgency && {
+        urgency: message.options.urgency,
       }),
-      ...(notification.options?.topic && {
-        topic: notification.options.topic,
+      ...(message.options?.topic && {
+        topic: message.options.topic,
       }),
 
       'content-encoding': 'aesgcm',

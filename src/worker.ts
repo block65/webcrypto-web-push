@@ -1,6 +1,6 @@
 /// <reference types="@cloudflare/workers-types" />
 import { buildPushPayload } from '../lib/main.js';
-import { notification, subscription, vapid } from './shared.js';
+import { message, subscription, vapid } from './shared.js';
 
 interface Env {
   VAPID_SUBJECT: string;
@@ -11,22 +11,22 @@ interface Env {
 export default {
   fetch: async function handleRequest() {
     try {
-      const init = await buildPushPayload(notification, subscription, vapid);
+      const init = await buildPushPayload(message, subscription, vapid);
 
       const res = await fetch(subscription.endpoint, init);
 
       if (res.ok) {
         return new Response(
-          `Push notification sent successfully! HTTP ${res.status} ${res.statusText}}`,
+          `Push message sent successfully! HTTP ${res.status} ${res.statusText}}`,
         );
       }
 
       return new Response(
-        `Push notification failed. HTTP ${res.status} ${res.statusText}}`,
+        `Push message send failed. HTTP ${res.status} ${res.statusText}}`,
       );
     } catch (err) {
       console.error(err);
-      return new Response('Failed to send push notification.', { status: 500 });
+      return new Response('Failed to send push message.', { status: 500 });
     }
   },
 } satisfies ExportedHandler<Env>;
