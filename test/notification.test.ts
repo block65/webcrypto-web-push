@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { decodeBase64Url, encodeBase64Url } from '../lib/base64.js';
-import { encryptNotification } from '../lib/encrypt.js';
-import { vapidHeaders } from '../lib/vapid.js';
+import { decodeBase64Url } from '../lib/base64.js';
+import { buildPushPayload } from '../lib/payload.js';
 import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 
 vi.mock('../lib/salt.js', () => ({
@@ -56,35 +55,18 @@ describe('', () => {
     vi.clearAllMocks();
   });
 
-  test('encryptNotification', async () => {
+  test('buildPushPayload', async () => {
     vi.setSystemTime(new Date(2000, 1, 1, 13));
 
     const subscription = fakeSubscriptions.test;
 
-    const encryptResult = await encryptNotification(
-      subscription,
-      new TextEncoder().encode('This is test data.'),
-    );
-
-    const vapid = await vapidHeaders(subscription, fakeVapid);
-
-    const requestInfo = {
-      headers: {
-        ...vapid.headers,
-
-        'crypto-key': `keyid=p256dh;dh=${encodeBase64Url(
-          encryptResult.serverPublic,
-        )};${vapid.headers['crypto-key']}`,
-
-        encryption: `keyid=p256dh;salt=${encodeBase64Url(encryptResult.salt)}`,
-
-        'content-encoding': 'aesgcm',
-        'content-length': encryptResult.ciphertext.byteLength.toString(),
-        'content-type': 'application/octet-stream',
+    const requestInfo = await buildPushPayload(
+      {
+        data: 'This is test data.',
       },
-      method: 'post',
-      body: encryptResult.ciphertext,
-    } satisfies RequestInit;
+      subscription,
+      fakeVapid,
+    );
 
     expect(requestInfo.body).toMatchSnapshot();
     expect(requestInfo.method).toMatchSnapshot();

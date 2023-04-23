@@ -3,6 +3,8 @@
   "outDir": "./dist/test",
   "compilerOptions": {
     "noEmit": true,
+    "jsx": "react-jsxdev",
+    "lib": ["esnext", "dom", "webworker"],
     "types": [
       "vitest-environment-miniflare/globals",
       "@cloudflare/workers-types",

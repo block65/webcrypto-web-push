@@ -28,3 +28,8 @@ dist-watch:
 pretty: node_modules
 	pnpm eslint --fix .
 	pnpm prettier --write .
+
+
+.PHONY: dev-server
+dev-server:
+	pnpm wrangler dev src/worker.ts

@@ -1,3 +1,5 @@
+import { crypto } from './isomorphic-crypto.js';
+
 function createHMAC(data: ArrayBuffer) {
   if (data.byteLength === 0) {
     return {

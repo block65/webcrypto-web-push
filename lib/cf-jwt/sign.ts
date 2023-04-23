@@ -1,3 +1,4 @@
+import { crypto, CryptoKey } from '../isomorphic-crypto.js';
 import { encodeBase64Url, objectToBase64Url } from './base64.js';
 import { algorithms, type JwtAlgorithm } from './jwt-algorithms.js';
 import { type JwtPayload, type JwtHeader } from './jwt.js';

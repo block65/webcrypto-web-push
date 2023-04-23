@@ -1,5 +1,6 @@
 import { decodeBase64Url, encodeBase64Url } from './base64.js';
 import { sign } from './cf-jwt/main.js';
+import { crypto } from './isomorphic-crypto.js';
 import type { PushSubscription } from './types.js';
 
 export interface VapidKeys {
@@ -14,7 +15,7 @@ export async function vapidHeaders(
 ) {
   const vapidPublicKeyBytes = decodeBase64Url(vapid.publicKey);
 
-  const publicJwk = await crypto.subtle.importKey(
+  const publicKey = await crypto.subtle.importKey(
     'jwk',
     {
       kty: 'EC',
@@ -27,7 +28,7 @@ export async function vapidHeaders(
       name: 'ECDSA',
       namedCurve: 'P-256',
     },
-    true,
+    false,
     ['sign'],
   );
 
@@ -37,7 +38,7 @@ export async function vapidHeaders(
       exp: Math.floor(Date.now() / 1000) + 12 * 60 * 60,
       sub: vapid.subject,
     },
-    publicJwk,
+    publicKey,
     {
       algorithm: 'ES256',
     },

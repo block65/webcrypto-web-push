@@ -1,6 +1,7 @@
 import { deriveClientKeys } from './client-keys.js';
 import { hkdf } from './hkdf.js';
 import { createInfo, createInfo2 } from './info.js';
+import { crypto } from './isomorphic-crypto.js';
 import { ecJwkToBytes } from './jwk-to-bytes.js';
 import { generateLocalKeys } from './local-keys.js';
 import { getSalt } from './salt.js';
@@ -10,35 +11,42 @@ import { arrayChunk, be16, flattenUint8Array, generateNonce } from './utils.js';
 export interface EncryptedNotification {
   ciphertext: Uint8Array;
   salt: Uint8Array;
-  serverPublic: Uint8Array;
+  localPublicKeyBytes: Uint8Array;
 }
 
 // See https://developer.chrome.com/blog/web-push-encryption/
 export async function encryptNotification(
-  clientSubscription: PushSubscription,
+  subscription: PushSubscription,
   plaintext: Uint8Array,
 ): Promise<EncryptedNotification> {
-  const clientKeys = await deriveClientKeys(clientSubscription);
+  const clientKeys = await deriveClientKeys(subscription);
   const salt = await getSalt();
 
-  // Server keys
-  const serverKeys = await generateLocalKeys();
-  const serverPublic = ecJwkToBytes(serverKeys.publicJwk);
+  // Local ephemeral keys
+  const localKeys = await generateLocalKeys();
+  const localPublicKeyBytes = ecJwkToBytes(localKeys.publicJwk);
 
   const sharedSecret = await crypto.subtle.deriveBits(
     {
       name: 'ECDH',
-      // @ts-expect-error - cloudflare worker encryption types are wrong?
       // namedCurve: 'P-256',
       public: clientKeys.publicKey,
     },
-    serverKeys.privateKey,
+    localKeys.privateKey,
     256,
   );
 
   // Infos
-  const cekInfo = createInfo(clientKeys.publicBytes, serverPublic, 'aesgcm');
-  const nonceInfo = createInfo(clientKeys.publicBytes, serverPublic, 'nonce');
+  const cekInfo = createInfo(
+    clientKeys.publicBytes,
+    localPublicKeyBytes,
+    'aesgcm',
+  );
+  const nonceInfo = createInfo(
+    clientKeys.publicBytes,
+    localPublicKeyBytes,
+    'nonce',
+  );
   const keyInfo = createInfo2('auth');
 
   // Encrypt
@@ -85,6 +93,6 @@ export async function encryptNotification(
   return {
     ciphertext: flattenUint8Array(cipherChunks),
     salt,
-    serverPublic,
+    localPublicKeyBytes,
   };
 }
