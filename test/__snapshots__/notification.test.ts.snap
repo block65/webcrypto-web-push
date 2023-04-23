@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`encryptNotification 1`] = `
+exports[`buildPushPayload 1`] = `
 Uint8Array [
   94,
   43,
@@ -41,19 +41,20 @@ Uint8Array [
 ]
 `;
 
-exports[`encryptNotification 2`] = `"post"`;
+exports[`buildPushPayload 2`] = `"post"`;
 
-exports[`encryptNotification 3`] = `
+exports[`buildPushPayload 3`] = `
 {
   "content-encoding": "aesgcm",
   "content-length": "36",
   "content-type": "application/octet-stream",
   "crypto-key": "keyid=p256dh;dh=BO6-TCHINeAfMhq44SQLnR-3NZnAfwe2n-CjcESbHlOcJkx_8JqbcwRJMd5zrZouJbIUe2AkFnhoDavSymNyOA0;p256ecdsa=BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQpaO-VI3o3wn33mQ8JlHta3OSJ5f67Ac5ZY",
   "encryption": "keyid=p256dh;salt=4CQCKEyyOT_LysC17rsMXQ",
+  "ttl": "60",
 }
 `;
 
-exports[`encryptNotification 4`] = `
+exports[`buildPushPayload 4`] = `
 [
   "WebPush eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjk0OTM4MTIwMCwiYXVkIjoiaHR0cHM6Ly9mY20uZ29vZ2xlYXBpcy5jb20iLCJleHAiOjk0OTQyNDQwMCwic3ViIjoibWFpbHRvOnRlc3RAdGVzdC50ZXN0In0.",
   "WebPush eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjk0OTM4MTIwMCwiYXVkIjoiaHR0cHM6Ly9mY20uZ29vZ2xlYXBpcy5jb20iLCJleHAiOjk0OTQyNDQwMCwic3ViIjoibWFpbHRvOnRlc3RAdGVzdC50ZXN0In0.",
