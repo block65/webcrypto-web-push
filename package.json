@@ -1,6 +1,6 @@
 {
   "name": "@block65/webcrypto-web-push",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "license": "MIT",
   "type": "module",
