@@ -1,8 +1,8 @@
 /// <reference types="node" />
-
 import { buildPushPayload } from '../lib/main.js';
 import { message, subscription, vapid } from './shared.js';
 
+// @types/node doesnt have fetch yet
 declare let fetch: typeof import('undici').fetch;
 
 const init = await buildPushPayload(message, subscription, vapid);
