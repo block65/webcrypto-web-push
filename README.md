@@ -1,7 +1,7 @@
 # @block65/webcrypto-web-push
 
 Send notifications using Web Push Protocol and Web Crypto APIs (compatible with
-Cloudflare Workers)
+both Node and Cloudflare Workers)
 
 ## Installation
 
@@ -49,8 +49,9 @@ const message: PushMessage = {
   },
 };
 
-// send the payload using your favourite fetch library
 const init = await buildPushPayload(message, subscription, vapid);
+
+// send the payload using your favourite HTTP client
 const res = await fetch(subscription.endpoint, init);
 ```
 
