@@ -56,7 +56,7 @@ describe('', () => {
   });
 
   test('buildPushPayload', async () => {
-    vi.setSystemTime(new Date(2000, 1, 1, 13));
+    vi.setSystemTime(new Date(2000, 1, 1, 13, 0, 0, 0));
 
     const subscription = fakeSubscriptions.test;
 
