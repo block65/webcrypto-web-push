@@ -13,6 +13,7 @@ clean:
 .PHONY: test
 test: node_modules
 	pnpm exec vitest
+	$(MAKE) smoketest
 
 node_modules: package.json
 	pnpm install
@@ -33,3 +34,6 @@ pretty: node_modules
 .PHONY: dev-server
 dev-server:
 	pnpm wrangler dev src/worker.ts
+.PHONY: smoketest
+smoketest: dist
+	pnpm exec node -e "import('@block65/webcrypto-web-push').then(() => console.log('smoketest ok')).catch(console.error)"
