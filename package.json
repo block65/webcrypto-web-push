@@ -2,15 +2,8 @@
   "name": "@block65/webcrypto-web-push",
   "version": "0.3.0",
   "private": false,
-  "license": "UNLICENSED",
-  "sideEffects": false,
+  "license": "MIT",
   "type": "module",
-  "imports": {
-    "#internal": {
-      "types": "./dist/lib/main.d.ts",
-      "default": "./dist/lib/main.js"
-    }
-  },
   "exports": {
     ".": {
       "types": "./dist/lib/main.d.ts",
