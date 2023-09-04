@@ -11,8 +11,8 @@ clean:
 	pnpm tsc -b --clean
 
 .PHONY: test
-test:
-	pnpm vitest
+test: node_modules
+	pnpm exec vitest
 
 node_modules: package.json
 	pnpm install
