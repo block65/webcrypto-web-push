@@ -3,9 +3,6 @@ SRCS = $(wildcard lib/**)
 
 all: dist
 
-.PHONY: deps
-deps: node_modules
-
 .PHONY: clean
 clean:
 	pnpm tsc -b --clean
