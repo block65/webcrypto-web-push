@@ -18,8 +18,8 @@
     }
   },
   "files": [
-    "dist/lib/*.js",
-    "dist/lib/*.d.ts"
+    "dist/lib/**/*.js",
+    "dist/lib/**/*.d.ts"
   ],
   "scripts": {
     "preversion": "make test"
