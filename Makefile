@@ -16,21 +16,21 @@ node_modules: package.json
 	pnpm install
 
 dist: node_modules tsconfig-lib.json $(SRCS)
-	pnpm tsc -b tsconfig-lib.json
+	pnpm exec tsc -b tsconfig-lib.json
 
 .PHONY: dist-watch
 dist-watch:
-	pnpm tsc -w --preserveWatchOutput
+	pnpm exec tsc -w --preserveWatchOutput
 
 .PHONY: pretty
 pretty: node_modules
-	pnpm eslint --fix .
-	pnpm prettier --write .
-
+	pnpm exec eslint --fix .
+	pnpm exec prettier --write .
 
 .PHONY: dev-server
-dev-server:
-	pnpm wrangler dev src/worker.ts
+dev-server: node_modules
+	pnpm exec wrangler dev src/worker.ts
+
 .PHONY: smoketest
 smoketest: dist
 	pnpm exec node -e "import('@block65/webcrypto-web-push').then(() => console.log('smoketest ok')).catch(console.error)"
