@@ -1,4 +1,8 @@
-.DEFAULT_GOAL := dev
+.DEFAULT_GOAL := build
+
+.PHONY: build
+build: node_modules
+	pnpm exec tsc -b
 
 .PHONY: dev
 dev: node_modules
