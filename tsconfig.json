@@ -1,15 +1,7 @@
 {
   "extends": "./tsconfig-base.json",
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig-lib.json"
-    },
-    {
-      "path": "./tsconfig-src.json"
-    },
-    {
-      "path": "./tsconfig-test.json"
-    }
-  ]
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "files": ["./vitest.config.ts"]
 }

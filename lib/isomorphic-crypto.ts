@@ -1,7 +1,5 @@
-/// <reference lib="dom" />
 /// <reference lib="webworker" />
 /// <reference types="node" />
-/// <reference types="@cloudflare/workers-types" />
 
 const impl = await (typeof globalThis !== 'undefined' && globalThis.crypto
   ? globalThis.crypto
