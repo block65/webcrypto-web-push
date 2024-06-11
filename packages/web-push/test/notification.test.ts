@@ -1,7 +1,8 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 import { decodeBase64Url } from '../lib/cf-jwt/base64.js';
+import { crypto } from '../lib/isomorphic-crypto.js';
 import { buildPushPayload } from '../lib/main.js';
+import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 
 vi.mock('../lib/salt.js', () => ({
   getSalt: () => decodeBase64Url('4CQCKEyyOT_LysC17rsMXQ'),

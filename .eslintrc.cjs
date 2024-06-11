@@ -11,10 +11,12 @@ module.exports = {
 
       './examples/browser/tsconfig.json',
       './examples/browser/tsconfig-sw.json',
+      './examples/browser/tsconfig.node.json',
       './examples/nodejs/tsconfig.json',
       './examples/cloudflare-workers/tsconfig.json',
 
       './packages/web-push/tsconfig.json',
+      './packages/web-push/test/tsconfig.json',
     ],
   },
   rules: {

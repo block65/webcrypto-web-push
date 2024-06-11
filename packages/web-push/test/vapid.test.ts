@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, test, vi } from 'vitest';
-import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 import { vapidHeaders } from '../lib/vapid.js';
+import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 
 describe('VAPID', () => {
   beforeEach(() => {
