@@ -1,15 +1,21 @@
 {
-  "extends": "./tsconfig-base.json",
+  "extends": "@tsconfig/node20",
   "files": [],
+  "compilerOptions": {
+    "noEmit": true
+  },
   "references": [
     {
-      "path": "./tsconfig-lib.json"
+      "path": "./packages/web-push"
     },
     {
-      "path": "./tsconfig-src.json"
+      "path": "./examples/cloudflare-workers"
     },
     {
-      "path": "./tsconfig-test.json"
+      "path": "./examples/nodejs"
+    },
+    {
+      "path": "./examples/browser"
     }
   ]
 }

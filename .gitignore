@@ -1,3 +1,10 @@
 node_modules
 dist
 coverage
+
+.wrangler
+
+*.tsbuildinfo
+
+sqlite.db
+**/migrations/meta/

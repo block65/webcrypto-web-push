@@ -1,0 +1,22 @@
+{
+  "name": "cloudflare-workers-example",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev main.ts --port=3000",
+    "generate": "drizzle-kit generate --config drizzle.config.ts",
+    "test": "wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "@block65/webcrypto-web-push": "workspace:*",
+    "drizzle-orm": "^0.31.2",
+    "hono": "^4.4.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240605.0",
+    "@tsconfig/node20": "^20.1.4",
+    "drizzle-kit": "^0.22.7",
+    "wrangler": "^3.60.1"
+  }
+}

@@ -1,36 +1,35 @@
+.DEFAULT_GOAL := build
 
-SRCS = $(wildcard lib/**)
+.PHONY: build
+build: node_modules
+	pnpm exec tsc -b
 
-all: dist
+.PHONY: dev
+dev: node_modules
+	pnpm exec tsc -b -w
 
 .PHONY: clean
-clean:
-	pnpm tsc -b --clean
+clean: node_modules
+	pnpm exec tsc -b --clean
 
-.PHONY: test
-test: node_modules
-	pnpm exec vitest
-	$(MAKE) smoketest
+.PHONY: distclean
+distclean: clean
+	rm -rf node_modules
+
+.PHONY: lint
+lint: node_modules
+	pnpm exec eslint .
+	pnpm exec prettier --check .
 
 node_modules: package.json
 	pnpm install
 
-dist: node_modules tsconfig-lib.json $(SRCS)
-	pnpm exec tsc -b tsconfig-lib.json
-
-.PHONY: dist-watch
-dist-watch:
-	pnpm exec tsc -w --preserveWatchOutput
+.PHONY: test
+test: node_modules
+	pnpm run -r test
 
 .PHONY: pretty
 pretty: node_modules
-	pnpm exec eslint --fix .
+	pnpm exec eslint --fix . || true
 	pnpm exec prettier --write .
-
-.PHONY: dev-server
-dev-server: node_modules
-	pnpm exec wrangler dev src/worker.ts
-
-.PHONY: smoketest
-smoketest: dist
-	pnpm exec node -e "import('@block65/webcrypto-web-push').then(() => console.log('smoketest ok')).catch(console.error)"
+	pnpx sort-package-json package.json packages/*/package.json examples/*/package.json
