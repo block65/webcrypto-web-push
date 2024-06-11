@@ -1,5 +1,4 @@
 import { crypto } from './isomorphic-crypto.js';
-import { invariant } from './utils.js';
 
 export async function generateLocalKeys() {
   const keyPair = await crypto.subtle.generateKey(
@@ -11,14 +10,8 @@ export async function generateLocalKeys() {
     ['deriveBits'],
   );
 
-  // satisfy types
-  invariant('publicKey' in keyPair, 'localKeysCurve is not a keypair');
-
   const publicJwk = await crypto.subtle.exportKey('jwk', keyPair.publicKey);
   const privateJwk = await crypto.subtle.exportKey('jwk', keyPair.privateKey);
-
-  // satisfy types
-  invariant('kty' in publicJwk, 'publicJwk is not a JWK');
 
   return {
     publicKey: await crypto.subtle.importKey(
