@@ -6,16 +6,21 @@ on:
 
 jobs:
   test:
+    strategy:
+      matrix:
+        node-version: ['18', '20', '22']
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
-          node-version-file: '.node-version'
+          node-version: ${{ matrix.node-version }}
 
       - run: make test
