@@ -1,9 +1,9 @@
 /// <reference lib="webworker" />
 /// <reference types="node" />
 
-const impl = await (typeof globalThis !== 'undefined' && globalThis.crypto
+const impl = globalThis.crypto
   ? globalThis.crypto
-  : import('node:crypto'));
+  : await import('node:crypto');
 
 // we only export the values we use to keep things simple, we dont need a fully
 // cross platform compatible crypto library
