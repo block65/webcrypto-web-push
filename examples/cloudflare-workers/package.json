@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev main.ts --port=3000",
-    "generate": "drizzle-kit generate --config drizzle.config.ts"
+    "generate": "drizzle-kit generate --config drizzle.config.ts",
+    "test": "wrangler deploy --dry-run"
   },
   "dependencies": {
     "@block65/webcrypto-web-push": "workspace:*",
