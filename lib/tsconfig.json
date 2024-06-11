@@ -3,6 +3,7 @@
   "extends": "@tsconfig/node20",
   "outDir": "./dist",
   "compilerOptions": {
+    "composite": true,
     "types": ["@cloudflare/workers-types"]
   },
   "include": ["."],
