@@ -1,6 +1,6 @@
 /// <reference types="@cloudflare/workers-types" />
 import { buildPushPayload } from '../lib/main.js';
-import { exampleMessage, exampleSubscription } from './shared.js';
+import { exampleMessage, exampleSubscription } from './fixtures.js';
 
 interface Env {
   VAPID_SUBJECT: string;
