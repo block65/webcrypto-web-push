@@ -38,7 +38,7 @@ export function encodeLength(int: number) {
   return new Uint8Array([0, int]);
 }
 
-export function invariant<T extends any>(
+export function invariant<T>(
   condition: T | undefined | null | '' | 0 | false,
   message: string,
 ): asserts condition {
