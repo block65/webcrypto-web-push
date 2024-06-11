@@ -1,17 +1,13 @@
-import {
-  type PushMessage,
-  type PushSubscription,
-  type VapidKeys,
-} from '../lib/main.js';
+import type { PushMessage, PushSubscription, VapidKeys } from '../lib/main.js';
 
-export const vapid: VapidKeys = {
-  subject: 'mailto:test@test.test',
+export const exampleVapid: VapidKeys = {
+  subject: 'mailto:test@example.com',
   publicKey:
     'BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQpaO-VI3o3wn33mQ8JlHta3OSJ5f67Ac5ZY',
   privateKey: 'VvFbnS5QlP5PcJzYyEpRQj93SFJetREtqqzbGAfK3RE',
 };
 
-export const subscription: PushSubscription = {
+export const exampleSubscription: PushSubscription = {
   endpoint:
     'https://fcm.googleapis.com/fcm/send/fsy7jmarsUw:APA91bGW9NHHHkulPFRUclKDHx5MYuXn0jZ23r4cPkHtwQ8nMjxXpkfEWW4LdUugsNMCHKGooY3nD-rou0nKGHz_qkl5nhxbIGTXgw7N21nn3TbPJnaLcRR-Lc-kxS7Q6KOlCUwER03U',
   expirationTime: null,
@@ -22,7 +18,7 @@ export const subscription: PushSubscription = {
   },
 };
 
-export const message: PushMessage = {
+export const exampleMessage: PushMessage = {
   data: "You've got mail!",
   options: {
     ttl: 60,

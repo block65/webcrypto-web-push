@@ -1,6 +1,6 @@
 /// <reference types="@cloudflare/workers-types" />
 import { buildPushPayload } from '../lib/main.js';
-import { message, subscription, vapid } from './shared.js';
+import { exampleMessage, exampleSubscription } from './shared.js';
 
 interface Env {
   VAPID_SUBJECT: string;
@@ -9,11 +9,19 @@ interface Env {
 }
 
 export default {
-  fetch: async function handleRequest() {
+  fetch: async (_req, env) => {
     try {
-      const init = await buildPushPayload(message, subscription, vapid);
+      // You would have this `exampleSubscription` stored in your own private
+      // datastore, after receiving it from the client you with to push to.
+      const subscription = exampleSubscription;
 
-      const res = await fetch(subscription.endpoint, init);
+      const payload = await buildPushPayload(exampleMessage, subscription, {
+        subject: env.VAPID_SUBJECT,
+        publicKey: env.VAPID_SERVER_PUBLIC_KEY,
+        privateKey: env.VAPID_SERVER_PRIVATE_KEY,
+      });
+
+      const res = await fetch(subscription.endpoint, payload);
 
       if (res.ok) {
         return new Response(
