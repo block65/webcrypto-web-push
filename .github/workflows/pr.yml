@@ -16,5 +16,6 @@ jobs:
         with:
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
+          node-version-file: '.node-version'
 
       - run: make test
