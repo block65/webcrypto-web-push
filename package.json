@@ -25,7 +25,7 @@
     "preversion": "make test"
   },
   "dependencies": {
-    "@block65/custom-error": "^11.0.1",
+    "@block65/custom-error": "^12.2.0",
     "base64-arraybuffer": "^1.0.2"
   },
   "devDependencies": {
