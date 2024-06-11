@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { buildPushPayload } from '../lib/main.js';
-import { type PushMessage } from '../lib/types.js';
+import type { PushMessage } from '../lib/types.js';
 import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 
 describe('Payload', () => {

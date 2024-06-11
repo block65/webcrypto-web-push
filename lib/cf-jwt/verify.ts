@@ -1,6 +1,6 @@
 import { decode } from './decode.js';
 import { algorithms } from './jwt-algorithms.js';
-import { type JwtPayload, type JwtHeader } from './jwt.js';
+import type { JwtPayload, JwtHeader } from './jwt.js';
 
 export async function verify<
   P extends JwtPayload,

@@ -1,6 +1,6 @@
 import { base64UrlToObject, decodeBase64Url } from './base64.js';
 import { ValidationError } from './errors.js';
-import { type JwtHeader, type JwtPayload } from './jwt.js';
+import type { JwtHeader, JwtPayload } from './jwt.js';
 
 export function decode(token: string) {
   const tokenParts = token.split('.') as [string, string, string];

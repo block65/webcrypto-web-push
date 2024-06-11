@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { type JwtAlgorithm } from './jwt-algorithms.js';
+import type { JwtAlgorithm } from './jwt-algorithms.js';
 
 export interface JwtHeader {
   typ: 'JWT';

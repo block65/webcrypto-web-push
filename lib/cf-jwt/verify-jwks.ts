@@ -7,7 +7,7 @@ import {
 import { decode } from './decode.js';
 import { PermissionError } from './errors.js';
 import { algorithms, type JwtAlgorithm } from './jwt-algorithms.js';
-import { type JwtPayload, type JwtHeader } from './jwt.js';
+import type { JwtPayload, JwtHeader } from './jwt.js';
 import { verify } from './verify.js';
 
 export async function verifyJwks<

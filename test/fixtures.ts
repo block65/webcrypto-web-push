@@ -1,4 +1,4 @@
-import { type PushSubscription } from '../lib/types.js';
+import type { PushSubscription } from '../lib/types.js';
 
 export const fakeSubscriptions = {
   test: {

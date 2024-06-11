@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { type Jsonifiable, type RequireAtLeastOne } from 'type-fest';
+import type { Jsonifiable, RequireAtLeastOne } from 'type-fest';
 
 export interface PushMessage {
   data: Jsonifiable;
