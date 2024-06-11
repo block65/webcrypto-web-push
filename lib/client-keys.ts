@@ -1,4 +1,4 @@
-import { decodeBase64Url, encodeBase64Url } from './base64.js';
+import { decodeBase64Url, encodeBase64Url } from './cf-jwt/base64.js';
 import { crypto } from './isomorphic-crypto.js';
 import type { PushSubscription } from './types.js';
 

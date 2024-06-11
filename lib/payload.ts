@@ -1,4 +1,4 @@
-import { encodeBase64Url } from './base64.js';
+import { encodeBase64Url } from './cf-jwt/base64.js';
 import { encryptNotification } from './encrypt.js';
 import type { PushMessage, PushSubscription } from './types.js';
 import { vapidHeaders, type VapidKeys } from './vapid.js';

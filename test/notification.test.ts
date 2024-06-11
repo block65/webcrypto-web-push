@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { decodeBase64Url } from '../lib/base64.js';
+import { decodeBase64Url } from '../lib/cf-jwt/main.js';
 import { buildPushPayload } from '../lib/payload.js';
 import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 

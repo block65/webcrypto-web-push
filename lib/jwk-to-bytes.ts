@@ -1,4 +1,4 @@
-import { decodeBase64Url } from './base64.js';
+import { decodeBase64Url } from './cf-jwt/base64.js';
 import { invariant } from './utils.js';
 
 export function ecJwkToBytes(jwk: JsonWebKey) {
