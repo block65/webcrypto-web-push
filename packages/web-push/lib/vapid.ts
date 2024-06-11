@@ -1,17 +1,24 @@
 import { sign, decodeBase64Url, encodeBase64Url } from './cf-jwt/main.js';
 import { crypto } from './isomorphic-crypto.js';
 import type { PushSubscription } from './types.js';
+import { invariant } from './utils.js';
 
-export interface VapidKeys {
-  subject: string;
-  publicKey: string;
-  privateKey: string;
-}
+// undefined as its likely they are coming from env vars
+// and this just makes DX nicer to check
+export type VapidKeys = {
+  subject: string | undefined;
+  publicKey: string | undefined;
+  privateKey: string | undefined;
+};
 
 export async function vapidHeaders(
   subscription: PushSubscription,
   vapid: VapidKeys,
 ) {
+  invariant(vapid.subject, 'Vapid subject is empty');
+  invariant(vapid.privateKey, 'Vapid private key is empty');
+  invariant(vapid.publicKey, 'Vapid public key is empty');
+
   const vapidPublicKeyBytes = decodeBase64Url(vapid.publicKey);
 
   const publicKey = await crypto.subtle.importKey(

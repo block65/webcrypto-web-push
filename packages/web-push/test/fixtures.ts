@@ -13,6 +13,7 @@ export const fakeSubscriptions = {
   },
 } satisfies Record<string, PushSubscription>;
 
+// WARN: these keys are not secure, generate your own!
 export const fakeVapid = {
   subject: 'mailto:test@test.test',
   publicKey:

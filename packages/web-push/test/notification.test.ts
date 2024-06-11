@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { decodeBase64Url } from '../lib/cf-jwt/main.js';
-import { buildPushPayload } from '../lib/payload.js';
 import { fakeSubscriptions, fakeVapid } from './fixtures.js';
+import { decodeBase64Url } from '../lib/cf-jwt/base64.js';
+import { buildPushPayload } from '../lib/main.js';
 
 vi.mock('../lib/salt.js', () => ({
   getSalt: () => decodeBase64Url('4CQCKEyyOT_LysC17rsMXQ'),

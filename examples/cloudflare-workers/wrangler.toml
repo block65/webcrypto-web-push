@@ -1,0 +1,17 @@
+name = "cloudflare-workers-example"
+main = "main.ts"
+compatibility_date = "2024-06-05"
+
+# This flag is required to use `@cloudflare/vitest-pool-workers`
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+VAPID_SUBJECT = "mailto:test@test.test"
+# WARN: these keys are not secure, generate your own!
+VAPID_SERVER_PRIVATE_KEY = "VvFbnS5QlP5PcJzYyEpRQj93SFJetREtqqzbGAfK3RE"
+VAPID_SERVER_PUBLIC_KEY = "BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQpaO-VI3o3wn33mQ8JlHta3OSJ5f67Ac5ZY"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "db"
+database_id = "db"

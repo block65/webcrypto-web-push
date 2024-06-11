@@ -1,8 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import type { Jsonifiable, RequireAtLeastOne } from 'type-fest';
 
-export interface PushMessage {
-  data: Jsonifiable;
+export type PushMessage<T extends Jsonifiable = Jsonifiable> = {
+  data: T;
 
   options?: RequireAtLeastOne<{
     // TTL (or time to live) is an integer specifying the number of seconds
@@ -21,13 +20,13 @@ export interface PushMessage {
     // battery is low.
     urgency?: 'low' | 'normal' | 'high';
   }>;
-}
+};
 
-export interface PushSubscription {
+export type PushSubscription = {
   endpoint: string;
-  expirationTime: null | unknown;
+  expirationTime: null | DOMHighResTimeStamp;
   keys: {
     auth: string; // secret
     p256dh: string; // key
   };
-}
+};

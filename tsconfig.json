@@ -1,13 +1,21 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
+  "extends": "@tsconfig/node20",
+  "files": [],
   "compilerOptions": {
     "noEmit": true
   },
-  "files": ["./vitest.config.ts"],
-  "include": [],
   "references": [
     {
-      "path": "./lib"
+      "path": "./packages/web-push"
+    },
+    {
+      "path": "./examples/cloudflare-workers"
+    },
+    {
+      "path": "./examples/nodejs"
+    },
+    {
+      "path": "./examples/browser"
     }
   ]
 }

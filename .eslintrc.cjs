@@ -1,12 +1,20 @@
 module.exports = {
   root: true,
-  extends: ['@block65/eslint-config/typescript'],
+  extends: [
+    '@block65/eslint-config',
+    '@block65/eslint-config/typescript',
+    '@block65/eslint-config/react',
+  ],
   parserOptions: {
     project: [
       './tsconfig.json',
-      './test/tsconfig.json',
-      './lib/tsconfig.json',
-      './examples/tsconfig.json',
+
+      './examples/browser/tsconfig.json',
+      './examples/browser/tsconfig-sw.json',
+      './examples/nodejs/tsconfig.json',
+      './examples/cloudflare-workers/tsconfig.json',
+
+      './packages/web-push/tsconfig.json',
     ],
   },
   rules: {

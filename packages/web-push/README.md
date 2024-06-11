@@ -30,10 +30,10 @@ pnpm add @block65/webcrypto-web-push
 
 ```typescript
 import {
+  buildPushPayload,
   type PushSubscription,
   type PushMessage,
   type VapidKeys,
-  buildPushPayload,
 } from '@block65/webcrypto-web-push';
 
 // `env` could be `process.env` or `import.meta.env` depending
