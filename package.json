@@ -13,13 +13,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/lib/main.d.ts",
-      "default": "./dist/lib/main.js"
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
     }
   },
   "files": [
-    "dist/lib/**/*.js",
-    "dist/lib/**/*.d.ts"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "scripts": {
     "preversion": "make test"
