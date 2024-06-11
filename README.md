@@ -1,7 +1,7 @@
 # @block65/webcrypto-web-push
 
-Send notifications using Web Push Protocol and Web Crypto APIs (compatible with
-both Node and Cloudflare Workers)
+Send notifications using Web Push Protocol and Web Crypto APIs (works with
+NodeJS, Cloudflare Workers, Bun and Deno)
 
 ## Installation
 
@@ -22,9 +22,9 @@ pnpm add @block65/webcrypto-web-push
 ### Typescript
 
 > **Note**
-> This is an ESM package, if you are using Typescript, you will need
-to set `moduleResolution` to `node16`, `nodenext` or `bundler` in order to
-resolve the package exports.
+> This is an ESM package. If you are using Typescript, you will need
+> to set `moduleResolution` to `node16`, `nodenext` or `bundler` in order to
+> resolve the package exports.
 
 ## Usage
 
@@ -35,7 +35,6 @@ import {
   type VapidKeys,
   buildPushPayload,
 } from '@block65/webcrypto-web-push';
-
 
 // `env` could be `process.env` or `import.meta.env` depending
 // on your platform or build tooling
@@ -67,6 +66,8 @@ const payload = await buildPushPayload(message, subscription, vapid);
 
 // send the payload to the subscription endpoint using your favourite HTTP client
 const res = await fetch(subscription.endpoint, payload);
+
+console.log(res.status); // 201
 ```
 
 ## License
