@@ -59,7 +59,7 @@ describe('', () => {
   test('buildPushPayload', async () => {
     vi.setSystemTime(Date.UTC(2000, 1, 1, 13, 0, 0, 0));
 
-    const subscription = fakeSubscriptions.test;
+    const subscription = fakeSubscriptions.chrome;
 
     const requestInfo = await buildPushPayload(
       {

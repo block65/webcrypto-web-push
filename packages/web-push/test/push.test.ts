@@ -3,7 +3,7 @@ import { buildPushPayload, type PushMessage } from '../lib/main.js';
 import { fakeSubscriptions, fakeVapid } from './fixtures.js';
 
 describe('Payload', () => {
-  test('Fake Subscription', async () => {
+  test('Fake Chrome Subscription', async () => {
     const message: PushMessage = {
       data: 'Some text',
       options: {
@@ -15,7 +15,29 @@ describe('Payload', () => {
       },
     };
 
-    const subscription = fakeSubscriptions.test;
+    const subscription = fakeSubscriptions.chrome;
+
+    const init = await buildPushPayload(message, subscription, fakeVapid);
+    const res = await fetch(subscription.endpoint, init);
+
+    await expect(res.text()).resolves.toMatchInlineSnapshot('""');
+    expect(res.statusText).toMatchInlineSnapshot('"Created"');
+    expect(res.status).toMatchInlineSnapshot('201');
+  });
+
+  test('Fake Edge Subscription', async () => {
+    const message: PushMessage = {
+      data: 'Some text',
+      options: {
+        ttl: 60,
+        // Topics are strings that can be used to replace a pending messages with
+        // a new message if they have matching topic names
+        topic: 'from-test-env',
+        urgency: 'high',
+      },
+    };
+
+    const subscription = fakeSubscriptions.edge;
 
     const init = await buildPushPayload(message, subscription, fakeVapid);
     const res = await fetch(subscription.endpoint, init);

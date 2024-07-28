@@ -17,6 +17,6 @@ describe('VAPID', () => {
   test('Headers', async () => {
     vi.setSystemTime(new Date(2000, 1, 1, 13));
 
-    await vapidHeaders(fakeSubscriptions.test, fakeVapid);
+    await vapidHeaders(fakeSubscriptions.chrome, fakeVapid);
   });
 });

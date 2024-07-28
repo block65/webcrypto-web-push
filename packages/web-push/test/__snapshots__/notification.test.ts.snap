@@ -48,8 +48,8 @@ exports[`buildPushPayload 3`] = `
   "content-encoding": "aesgcm",
   "content-length": "36",
   "content-type": "application/octet-stream",
-  "crypto-key": "keyid=p256dh;dh=BO6-TCHINeAfMhq44SQLnR-3NZnAfwe2n-CjcESbHlOcJkx_8JqbcwRJMd5zrZouJbIUe2AkFnhoDavSymNyOA0;p256ecdsa=BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQpaO-VI3o3wn33mQ8JlHta3OSJ5f67Ac5ZY",
-  "encryption": "keyid=p256dh;salt=4CQCKEyyOT_LysC17rsMXQ",
+  "crypto-key": "dh=BO6-TCHINeAfMhq44SQLnR-3NZnAfwe2n-CjcESbHlOcJkx_8JqbcwRJMd5zrZouJbIUe2AkFnhoDavSymNyOA0;p256ecdsa=BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQpaO-VI3o3wn33mQ8JlHta3OSJ5f67Ac5ZY",
+  "encryption": "salt=4CQCKEyyOT_LysC17rsMXQ",
   "ttl": "60",
 }
 `;
