@@ -13,12 +13,12 @@ export const fakeSubscriptions = {
   },
   edge: {
     endpoint:
-      'https://wns2-sg2p.notify.windows.com/w/?token=BQYAAAAOqpMScCyZs07b3Rhi7WoqEBYPH9pHcOxdJ7lGF0E9YcvLHxBniuEp3FT3%2fHyZcyP%2fCPuqaZSQcIs%2bHn%2f5aQAk9l1BwojHAE2ZRuzMWEClZzdm3A661RAujyNyEoVeKjeTL872YTFMxb0AeEWrAMhQ969Pm9Pq93yunKqL8N0vcCwJ%2bSuznNCzDZgbAst2l2EWbDqRUeUClJxozU9SFowOV0ypMdluq%2bionNVEpJYo2JmnJs%2bQbVUv4MAH%2fKx3pe4CftTkDkgqWWcMhBkVwpexn6%2bNo7F5Ae1kM1vFhruf6%2f4Rc47cqvwSsbmcxj3MhGI%3d',
+      'https://wns2-sg2p.notify.windows.com/w/?token=BQYAAAALwNoB%2fBFE0R6H%2bayc5WRfMVkJlB3mHXSmsCTKWeZZM%2faOvneI8DaE%2fQeCC6uE17dj%2bPNz9drmi5bEvrNRTs8hzCS2abTpc4lfS9XbebI8lqe%2bXcPerho8q5SnWcTk4GURFakuZUYI6e0xMnTG%2bpvFxFatlhq4CELEEyo9%2fAP%2fHMx8tPCSXsh3sSFDtx6MkDnMHmR%2fUvcCrnLbXCDiseZ40bQI6a5tRmOM0izm0Gfc%2foKWmce8JUk2TRtm%2fecPR1F0X%2bVj4JQsDAR7Kx56HUCONLNMzuVm%2b9O6Yp1bLUfnp1QJyVOVyyj6DQfG%2bOOsikh%2bd2foJpWHggpFenW3NiT3',
     expirationTime: null,
     keys: {
       p256dh:
-        'BOHAcPFrsyWQchMJfijwJbLMV2HVBZHumzQPcgj_hhuXpbqaQunE09dRbWOasPW13e2K7RzQNVoJ7z1iXAFrypY',
-      auth: 'KxoJGb-hSSi8QFDyld-P7Q',
+        'BDPQRxcMhoXtPqJvQ9Kp-FGsQexasWXvh0RTE15Y0qbxKLFZ6eG3U90RJQFkb_SdAB_YzbIm7hcvzn1yAzNZbxs',
+      auth: 'XGCMxdgIGIp7SNs3kb4x7g',
     },
   },
 } satisfies Record<string, PushSubscription>;
