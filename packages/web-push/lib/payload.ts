@@ -24,11 +24,11 @@ export async function buildPushPayload(
     headers: {
       ...headers,
 
-      'crypto-key': `keyid=p256dh;dh=${encodeBase64Url(
+      'crypto-key': `dh=${encodeBase64Url(
         encrypted.localPublicKeyBytes,
       )};${headers['crypto-key']}`,
 
-      encryption: `keyid=p256dh;salt=${encodeBase64Url(encrypted.salt)}`,
+      encryption: `salt=${encodeBase64Url(encrypted.salt)}`,
 
       ttl: (message.options?.ttl || 60).toString(),
       ...(message.options?.urgency && {
