@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node20",
+  "extends": "@tsconfig/node22",
   "files": [],
   "compilerOptions": {
     "noEmit": true
