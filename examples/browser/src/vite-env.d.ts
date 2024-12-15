@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 interface ImportMetaEnv {
   // WARN: these keys are not secure, generate your own!
   VITE_SERVER_VAPID_PUBLIC_KEY: string;
