@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "composite": true,
-    "types": [] /* attempt to be isomorhpic */
+    "types": [] /* attempt to be isomorphic */
   },
   "include": ["./lib"],
   "exclude": ["./dist"]
