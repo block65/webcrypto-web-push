@@ -24,7 +24,9 @@ export type PushMessage<T extends Jsonifiable = Jsonifiable> = {
 
 export type PushSubscription = {
   endpoint: string;
-  expirationTime: null | DOMHighResTimeStamp;
+
+  /** DOMHighResTimeStamp */
+  expirationTime: number | null;
   keys: {
     auth: string; // secret
     p256dh: string; // key
