@@ -2,7 +2,7 @@ name: Unit Tests (PR)
 
 on:
   pull_request:
-    branches: ['canary', 'master']
+    branches: ["canary", "master"]
 
 jobs:
   test:
@@ -19,8 +19,8 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
           node-version: ${{ matrix.node-version }}
 
       - run: make test
