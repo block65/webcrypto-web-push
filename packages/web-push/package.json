@@ -19,7 +19,7 @@
       "default": "./dist/lib/main.js"
     }
   },
-  "files": ["dist/lib/**/*.js", "dist/lib/**/*.d.ts"],
+  "files": ["dist/lib/**/*"],
   "scripts": {
     "test": "make test",
     "preversion": "make test",
