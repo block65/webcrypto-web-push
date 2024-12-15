@@ -3,12 +3,12 @@ import type { PushSubscription } from '../lib/types.js';
 export const fakeSubscriptions = {
   chrome: {
     endpoint:
-      'https://fcm.googleapis.com/fcm/send/fL4MGn77FGc:APA91bE9RjT5iS_lfuBIm7PeOS2789EzyWGbUrh-viIAgsGbJIG-Rc65ipPt8hFS6aLwiyvyfXsSIVTZTuISxPUo3kcaklfv_WYpZ4g1g8jY6wChNoHkRmDpGN7qFgI2SkrV2SxYlL-r',
+      'https://fcm.googleapis.com/fcm/send/ekhJ4l8bTqw:APA91bGyU0XqT5uWpyGzpx9TDtGc0m-CTPpjnnOVnl_ybIOlue7LPYlHoRyWZ4JgySwceHjmvDprQMW9vehEZn5ifluMA0Bq2FA5qfYceC3vv5YivFFtA2debLNbpfiLEN73WyoVJfgG',
     expirationTime: null,
     keys: {
       p256dh:
-        'BJSK63fSr4N3Vrx2DPFmRrGLglmDOZBFy5AwUDINlEFMQYHjDS2YjZbIYTuOGQVp4ZbzJKki6cCYcKsMHSBF9-Y',
-      auth: 'lzqdvQzre8BPRpJTvFJZng',
+        'BGPknDTtnF3sW5XPDzZl9DD2YqFY0WsyqZJ2Pxrzq8x1HY-5aF2aRiCz_QKDY2nj-ZFtqdBwRsV9yoPRg_015Vo',
+      auth: 'ynfeyAwBSXODSCaeRNQZiw',
     },
   },
   edge: {
