@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@block65/custom-error": "^12.2.0",
-    "base64-arraybuffer": "^1.0.2",
+    "uint8array-extras": "^1.4.0",
     "type-fest": "^4.30.1"
   },
   "devDependencies": {

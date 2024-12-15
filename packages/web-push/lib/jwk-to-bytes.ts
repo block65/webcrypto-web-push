@@ -1,15 +1,13 @@
-import { decodeBase64Url } from './cf-jwt/base64.js';
+import { base64ToUint8Array } from 'uint8array-extras';
 import { invariant } from './utils.js';
 
 export function ecJwkToBytes(jwk: JsonWebKey) {
   invariant(jwk.x, 'jwk.x is missing');
   invariant(jwk.y, 'jwk.y is missing');
 
-  const xBytes = new Uint8Array(decodeBase64Url(jwk.x));
-  const yBytes = new Uint8Array(decodeBase64Url(jwk.y));
+  const xBytes = base64ToUint8Array(jwk.x);
+  const yBytes = base64ToUint8Array(jwk.y);
 
   // ANSI X9.62 point encoding - 0x04 for uncompressed
-  const raw = [0x04, ...xBytes, ...yBytes];
-
-  return new Uint8Array(raw);
+  return new Uint8Array([0x04, ...xBytes, ...yBytes]);
 }

@@ -1,7 +1,8 @@
-import { encodeBase64Url } from './cf-jwt/base64.js';
+import { stringToUint8Array, uint8ArrayToBase64 } from 'uint8array-extras';
 import { encryptNotification } from './encrypt.js';
 import type { PushMessage, PushSubscription } from './types.js';
 import { vapidHeaders, type VapidKeys } from './vapid.js';
+import { toBase64UrlSafe } from './base64.js';
 
 export async function buildPushPayload(
   message: PushMessage,
@@ -12,7 +13,7 @@ export async function buildPushPayload(
 
   const encrypted = await encryptNotification(
     subscription,
-    new TextEncoder().encode(
+    stringToUint8Array(
       // if its a primitive, convert to string, otherwise stringify
       typeof message.data === 'string' || typeof message.data === 'number'
         ? message.data.toString()
@@ -24,11 +25,9 @@ export async function buildPushPayload(
     headers: {
       ...headers,
 
-      'crypto-key': `dh=${encodeBase64Url(
-        encrypted.localPublicKeyBytes,
-      )};${headers['crypto-key']}`,
+      'crypto-key': `dh=${toBase64UrlSafe(encrypted.localPublicKeyBytes)};${headers['crypto-key']}`,
 
-      encryption: `salt=${encodeBase64Url(encrypted.salt)}`,
+      encryption: `salt=${toBase64UrlSafe(encrypted.salt)}`,
 
       ttl: (message.options?.ttl || 60).toString(),
       ...(message.options?.urgency && {
