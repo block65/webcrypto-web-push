@@ -15,10 +15,6 @@
     ".": {
       "types": "./dist/lib/main.d.ts",
       "default": "./dist/lib/main.js"
-    },
-    "./base64": {
-      "types": "./dist/lib/cf-jwt/base64.d.ts",
-      "default": "./dist/lib/cf-jwt/base64.js"
     }
   },
   "files": ["dist/lib/**/*.js", "dist/lib/**/*.d.ts"],
