@@ -21,7 +21,9 @@
   },
   "files": ["dist/lib/**/*.js", "dist/lib/**/*.d.ts"],
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "preversion": "make test",
+    "dev": "vitest"
   },
   "dependencies": {
     "@block65/custom-error": "^12.2.0",
