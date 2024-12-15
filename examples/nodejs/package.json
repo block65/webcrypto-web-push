@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node dist/main.js"
+    "dev": "drizzle-kit migrate && node dist/main.js"
   },
   "dependencies": {
     "@block65/webcrypto-web-push": "workspace:*",

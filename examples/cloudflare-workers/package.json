@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev main.ts --port=3000",
+    "dev": "wrangler d1 migrations apply db --local && wrangler dev main.ts --port=3065",
     "generate": "drizzle-kit generate --config drizzle.config.ts",
     "test": "wrangler deploy --dry-run"
   },
