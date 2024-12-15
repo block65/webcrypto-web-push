@@ -2,12 +2,14 @@
   "name": "@block65/webcrypto-web-push",
   "version": "1.0.2",
   "private": false,
+  "description": "Send notifications using Web Push Protocol and Web Crypto APIs (works with NodeJS, Cloudflare Workers, Bun and Deno)",
+  "keywords": ["web-push", "webcrypto", "vapid", "push-notifications"],
   "bugs": {
     "url": "https://github.com/block65/webcrypto-web-push/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/block65/webcrypto-web-push"
+    "url": "git+https://github.com/block65/webcrypto-web-push.git"
   },
   "license": "MIT",
   "type": "module",
