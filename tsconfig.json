@@ -1,21 +1,9 @@
 {
   "extends": "@tsconfig/node22",
   "files": [],
-  "compilerOptions": {
-    "noEmit": true
-  },
   "references": [
     {
       "path": "./packages/web-push"
-    },
-    {
-      "path": "./examples/cloudflare-workers"
-    },
-    {
-      "path": "./examples/nodejs"
-    },
-    {
-      "path": "./examples/browser"
     }
   ]
 }
