@@ -1,3 +1,4 @@
+import { stringToUint8Array } from 'uint8array-extras';
 import { encodeLength } from './utils.js';
 
 export function createInfo(
@@ -6,8 +7,8 @@ export function createInfo(
   type: 'aesgcm' | 'nonce' | 'auth',
 ) {
   return new Uint8Array([
-    ...new TextEncoder().encode(`Content-Encoding: ${type}\0`),
-    ...new TextEncoder().encode('P-256\0'),
+    ...stringToUint8Array(`Content-Encoding: ${type}\0`),
+    ...stringToUint8Array('P-256\0'),
     ...encodeLength(clientPublic.byteLength),
     ...clientPublic,
     ...encodeLength(serverPublic.byteLength),
@@ -16,12 +17,5 @@ export function createInfo(
 }
 
 export function createInfo2(type: 'aesgcm' | 'nonce' | 'auth') {
-  return new Uint8Array([
-    ...new TextEncoder().encode(`Content-Encoding: ${type}\0`),
-    // ...new TextEncoder().encode('P-256\0'),
-    // ...encodeInt(clientPublic.byteLength),
-    // ...clientPublic,
-    // ...encodeInt(serverPublic.byteLength),
-    // ...serverPublic,
-  ]);
+  return stringToUint8Array(`Content-Encoding: ${type}\0`);
 }

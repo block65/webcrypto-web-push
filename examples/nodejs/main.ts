@@ -110,6 +110,6 @@ app.onError((err, c) => {
   });
 });
 
-serve(app, (info) => {
-  console.log(`Listening on http://localhost:${info.port}`); // Listening on http://localhost:3000
+serve({ fetch: app.fetch, port: 3065 }, (info) => {
+  console.log(`Listening on http://localhost:${info.port}`); // Listening on http://localhost:3065
 });

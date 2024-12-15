@@ -9,18 +9,27 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@block65/eslint-config": "^12.0.1",
-    "@tsconfig/node20": "^20.1.4",
-    "@typescript-eslint/eslint-plugin": "^7.13.0",
-    "@typescript-eslint/parser": "^7.13.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "@biomejs/biome": "^1.9.4",
+    "@tsconfig/node22": "^22.0.0",
+    "@tsconfig/strictest": "^2.0.5",
+    "@tsconfig/vite-react": "^3.4.0",
+    "typescript": "^5.7.2"
   },
-  "packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "scripts": {
+    "preversion": "echo 'not in the root directory you dont'; exit 1"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
+        "@types/react": "19.0.1",
+        "@types/react-dom": "19.0.2"
+      }
+    }
   }
 }

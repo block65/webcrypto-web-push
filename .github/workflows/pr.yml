@@ -2,13 +2,13 @@ name: Unit Tests (PR)
 
 on:
   pull_request:
-    branches: ['canary', 'master']
+    branches: ["canary", "master"]
 
 jobs:
   test:
     strategy:
       matrix:
-        node-version: ['18', '20', '22']
+        node-version: ["20", "22"]
 
     runs-on: ubuntu-latest
     steps:
@@ -19,8 +19,8 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
           node-version: ${{ matrix.node-version }}
 
       - run: make test

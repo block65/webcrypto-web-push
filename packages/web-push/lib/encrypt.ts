@@ -38,12 +38,12 @@ export async function encryptNotification(
 
   // Infos
   const cekInfo = createInfo(
-    clientKeys.publicBytes,
+    clientKeys.publicKeyBytes,
     localPublicKeyBytes,
     'aesgcm',
   );
   const nonceInfo = createInfo(
-    clientKeys.publicBytes,
+    clientKeys.publicKeyBytes,
     localPublicKeyBytes,
     'nonce',
   );

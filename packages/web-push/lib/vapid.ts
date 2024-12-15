@@ -1,7 +1,9 @@
-import { sign, decodeBase64Url, encodeBase64Url } from './cf-jwt/main.js';
+import { base64ToUint8Array } from 'uint8array-extras';
 import { crypto } from './isomorphic-crypto.js';
 import type { PushSubscription } from './types.js';
 import { invariant } from './utils.js';
+import { toBase64UrlSafe } from './base64.js';
+import { sign } from './jwt.js';
 
 // undefined as its likely they are coming from env vars
 // and this just makes DX nicer to check
@@ -19,15 +21,15 @@ export async function vapidHeaders(
   invariant(vapid.privateKey, 'Vapid private key is empty');
   invariant(vapid.publicKey, 'Vapid public key is empty');
 
-  const vapidPublicKeyBytes = decodeBase64Url(vapid.publicKey);
+  const vapidPublicKeyBytes = base64ToUint8Array(vapid.publicKey);
 
   const publicKey = await crypto.subtle.importKey(
     'jwk',
     {
       kty: 'EC',
       crv: 'P-256',
-      x: encodeBase64Url(vapidPublicKeyBytes.slice(1, 33)),
-      y: encodeBase64Url(vapidPublicKeyBytes.slice(33, 65)),
+      x: toBase64UrlSafe(vapidPublicKeyBytes.slice(1, 33)),
+      y: toBase64UrlSafe(vapidPublicKeyBytes.slice(33, 65)),
       d: vapid.privateKey,
     },
     {

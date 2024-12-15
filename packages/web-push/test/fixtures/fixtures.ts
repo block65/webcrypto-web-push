@@ -1,6 +1,6 @@
-import type { PushSubscription } from '../lib/types.js';
+import type { PushSubscription } from '../../lib/types.js';
 
-export const fakeSubscriptions = {
+export const subscriptions = {
   chrome: {
     endpoint:
       'https://fcm.googleapis.com/fcm/send/ekhJ4l8bTqw:APA91bGyU0XqT5uWpyGzpx9TDtGc0m-CTPpjnnOVnl_ybIOlue7LPYlHoRyWZ4JgySwceHjmvDprQMW9vehEZn5ifluMA0Bq2FA5qfYceC3vv5YivFFtA2debLNbpfiLEN73WyoVJfgG',
@@ -22,11 +22,3 @@ export const fakeSubscriptions = {
     },
   },
 } satisfies Record<string, PushSubscription>;
-
-// WARN: these keys are not secure, generate your own!
-export const fakeVapid = {
-  subject: 'mailto:test@test.test',
-  publicKey:
-    'BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQpaO-VI3o3wn33mQ8JlHta3OSJ5f67Ac5ZY',
-  privateKey: 'VvFbnS5QlP5PcJzYyEpRQj93SFJetREtqqzbGAfK3RE',
-};

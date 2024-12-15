@@ -2,9 +2,6 @@ name = "cloudflare-workers-example"
 main = "main.ts"
 compatibility_date = "2024-06-05"
 
-# This flag is required to use `@cloudflare/vitest-pool-workers`
-compatibility_flags = ["nodejs_compat"]
-
 [vars]
 VAPID_SUBJECT = "mailto:test@test.test"
 # WARN: these keys are not secure, generate your own!
@@ -15,3 +12,4 @@ VAPID_SERVER_PUBLIC_KEY = "BKKXE3jJV5UJ6c8HVPam6DvMPGZK26r-M7ojsO2T_KdjdeMT2d7oQ
 binding = "DB"
 database_name = "db"
 database_id = "db"
+migrations_dir = "./drizzle"

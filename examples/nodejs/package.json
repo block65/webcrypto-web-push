@@ -4,20 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node dist/main.js"
+    "dev": "drizzle-kit migrate && node dist/main.js"
   },
   "dependencies": {
     "@block65/webcrypto-web-push": "workspace:*",
-    "@hono/node-server": "^1.11.2",
-    "better-sqlite3": "^11.0.0",
-    "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.31.2",
-    "hono": "^4.4.5"
+    "@hono/node-server": "^1.13.7",
+    "better-sqlite3": "^11.7.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.2",
+    "hono": "^4.6.14"
   },
   "devDependencies": {
-    "@tsconfig/node20": "^20.1.4",
-    "@types/better-sqlite3": "^7.6.10",
-    "@types/node": "^20.14.2",
-    "drizzle-kit": "^0.22.7"
+    "@tsconfig/node22": "^22.0.0",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "drizzle-kit": "^0.30.1"
   }
 }

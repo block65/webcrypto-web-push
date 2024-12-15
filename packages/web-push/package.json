@@ -2,12 +2,14 @@
   "name": "@block65/webcrypto-web-push",
   "version": "1.0.2",
   "private": false,
+  "description": "Send notifications using Web Push Protocol and Web Crypto APIs (works with NodeJS, Cloudflare Workers, Bun and Deno)",
+  "keywords": ["web-push", "webcrypto", "vapid", "push-notifications"],
   "bugs": {
     "url": "https://github.com/block65/webcrypto-web-push/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/block65/webcrypto-web-push"
+    "url": "git+https://github.com/block65/webcrypto-web-push.git"
   },
   "license": "MIT",
   "type": "module",
@@ -15,27 +17,22 @@
     ".": {
       "types": "./dist/lib/main.d.ts",
       "default": "./dist/lib/main.js"
-    },
-    "./base64": {
-      "types": "./dist/lib/cf-jwt/base64.d.ts",
-      "default": "./dist/lib/cf-jwt/base64.js"
     }
   },
-  "files": [
-    "dist/lib/**/*.js",
-    "dist/lib/**/*.d.ts"
-  ],
+  "files": ["dist/lib/**/*"],
   "scripts": {
-    "test": "make test"
+    "dev": "vitest",
+    "test": "make test",
+    "preversion": "make test"
   },
   "dependencies": {
     "@block65/custom-error": "^12.2.0",
-    "type-fest": "^4.20.0",
-    "base64-arraybuffer": "^1.0.2"
+    "type-fest": "^4.30.1",
+    "uint8array-extras": "^1.4.0"
   },
   "devDependencies": {
-    "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^20.14.2",
-    "vitest": "<=1.5.0"
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.10.2",
+    "vitest": "^2.1.8"
   }
 }

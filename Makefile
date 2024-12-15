@@ -16,11 +16,6 @@ clean: node_modules
 distclean: clean
 	rm -rf node_modules
 
-.PHONY: lint
-lint: node_modules
-	pnpm exec eslint .
-	pnpm exec prettier --check .
-
 node_modules: package.json
 	pnpm install
 
@@ -28,8 +23,11 @@ node_modules: package.json
 test: node_modules
 	pnpm run -r test
 
-.PHONY: pretty
-pretty: node_modules
-	pnpm exec eslint --fix . || true
-	pnpm exec prettier --write .
+.PHONY: format
+format: node_modules
+	pnpm exec biome format . --fix
+
+.PHONY: lint
+lint: node_modules
+	pnpm exec biome lint . --fix
 	pnpx sort-package-json package.json packages/*/package.json examples/*/package.json

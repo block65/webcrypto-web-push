@@ -1,5 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import react from '@vitejs/plugin-react';
+import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
@@ -8,22 +8,18 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-
-      strategies: 'injectManifest',
-
-      // this file does not NEED to be here
-      srcDir: 'public',
-      filename: 'push-sw.ts',
-
+      devOptions: {
+        enabled: true,
+      },
       manifest: {
         theme_color: '#000000',
       },
-
-      devOptions: {
-        enabled: true,
-        // chrome only
-        type: 'module',
-      },
     }),
   ],
+
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
 });

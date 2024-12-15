@@ -1,20 +1,21 @@
-import { decodeBase64Url, encodeBase64Url } from './cf-jwt/base64.js';
+import { base64ToUint8Array, stringToUint8Array } from 'uint8array-extras';
+import { toBase64UrlSafe } from './base64.js';
 import { crypto } from './isomorphic-crypto.js';
 import type { PushSubscription } from './types.js';
 
 export async function deriveClientKeys(sub: PushSubscription) {
-  const publicBytes = decodeBase64Url(sub.keys.p256dh);
+  const bytes = base64ToUint8Array(sub.keys.p256dh);
 
-  const publicJwk: JsonWebKey = {
+  const publicJwk = {
     kty: 'EC',
     crv: 'P-256',
-    x: encodeBase64Url(publicBytes.slice(1, 33)),
-    y: encodeBase64Url(publicBytes.slice(33, 65)),
+    x: toBase64UrlSafe(bytes.slice(1, 33)),
+    y: toBase64UrlSafe(bytes.slice(33, 65)),
     ext: true,
-  };
+  } satisfies JsonWebKey;
 
   return {
-    publicBytes: new Uint8Array(publicBytes),
+    publicKeyBytes: new Uint8Array(bytes),
     publicKey: await crypto.subtle.importKey(
       'jwk',
       publicJwk,
@@ -25,6 +26,6 @@ export async function deriveClientKeys(sub: PushSubscription) {
       true,
       [],
     ),
-    authSecretBytes: decodeBase64Url(sub.keys.auth),
+    authSecretBytes: stringToUint8Array(sub.keys.auth),
   };
 }

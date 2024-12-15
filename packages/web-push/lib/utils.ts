@@ -9,7 +9,6 @@ export function flattenUint8Array(arrays: Uint8Array[]) {
 
 export function be16(val: number) {
   // present an 8bit value as a Big Endian 16bit value
-  // eslint-disable-next-line no-bitwise
   return ((val & 0xff) << 8) | ((val >> 8) & 0xff);
 }
 
@@ -18,7 +17,9 @@ export function arrayChunk(arr: Uint8Array, chunkSize: number): Uint8Array[] {
   const arrayLength = arr.length;
   let i = 0;
   while (i < arrayLength) {
-    chunks.push(arr.slice(i, (i += chunkSize)));
+    const end = i + chunkSize;
+    chunks.push(arr.slice(i, end));
+    i = end;
   }
   return chunks;
 }
@@ -26,9 +27,7 @@ export function arrayChunk(arr: Uint8Array, chunkSize: number): Uint8Array[] {
 export function generateNonce(base: Uint8Array, index: number) {
   /* generate a 96-bit IV for use in GCM, 48-bits of which are populated */
   const nonce = base.slice(0, 12);
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 6; ++i) {
-    // eslint-disable-next-line no-bitwise
     nonce[nonce.length - 1 - i] ^= (index / 256 ** i) & 0xff;
   }
   return nonce;

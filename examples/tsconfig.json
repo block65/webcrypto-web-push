@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node22",
+  "files": [],
+  "references": [
+    {
+      "path": "./browser"
+    },
+    {
+      "path": "./nodejs"
+    },
+    {
+      "path": "./cloudflare-workers"
+    }
+  ]
+}
