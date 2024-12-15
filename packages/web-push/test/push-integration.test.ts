@@ -22,7 +22,7 @@ test('Fake Chrome Subscription', async () => {
 
   await expect(res.text()).resolves.toMatchInlineSnapshot(`""`);
   expect(res.statusText).toMatchInlineSnapshot(`"Created"`);
-  expect(res.status).toMatchInlineSnapshot(`201`);
+  expect(res.status).toMatchInlineSnapshot('201');
 });
 
 test('Fake Edge Subscription', async () => {
@@ -44,7 +44,7 @@ test('Fake Edge Subscription', async () => {
 
   await expect(res.text()).resolves.toMatchInlineSnapshot('""');
   expect(res.statusText).toMatchInlineSnapshot(`"Created"`);
-  expect(res.status).toMatchInlineSnapshot(`201`);
+  expect(res.status).toMatchInlineSnapshot('201');
 
   // seemingly Edge specific headers, static so we can check them here
   expect(res.headers.get('x-wns-notificationstatus')).toBe('received');

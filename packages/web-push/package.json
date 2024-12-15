@@ -21,14 +21,14 @@
   },
   "files": ["dist/lib/**/*"],
   "scripts": {
+    "dev": "vitest",
     "test": "make test",
-    "preversion": "make test",
-    "dev": "vitest"
+    "preversion": "make test"
   },
   "dependencies": {
     "@block65/custom-error": "^12.2.0",
-    "uint8array-extras": "^1.4.0",
-    "type-fest": "^4.30.1"
+    "type-fest": "^4.30.1",
+    "uint8array-extras": "^1.4.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
