@@ -3,33 +3,24 @@
   "bugs": {
     "url": "https://github.com/block65/webcrypto-web-push/issues"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/block65/webcrypto-web-push"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@tsconfig/node22": "^22.0.0",
-    "@tsconfig/strictest": "^2.0.5",
-    "@tsconfig/vite-react": "^3.4.0",
-    "typescript": "^5.7.2"
-  },
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "scripts": {
     "preversion": "echo 'not in the root directory you dont'; exit 1"
   },
-  "packageManager": "pnpm@9.15.0",
-  "pnpm": {
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "react": "19.0.0",
-        "react-dom": "19.0.0",
-        "@types/react": "19.0.1",
-        "@types/react-dom": "19.0.2"
-      }
-    }
-  }
+  "devDependencies": {
+    "@tsconfig/node26": "^26.0.1",
+    "@tsconfig/strictest": "^2.0.8",
+    "@tsconfig/vite-react": "^8.1.1",
+    "oxfmt": "^0.66.0",
+    "oxlint": "^1.81.0",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "pnpm@11.25.0"
 }

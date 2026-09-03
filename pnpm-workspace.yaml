@@ -2,3 +2,9 @@ packages:
   - 'packages/*'
   - 'examples/*'
   - '!**/test/**'
+allowBuilds:
+  better-sqlite3: false
+  esbuild: false
+  workerd: false
+minimumReleaseAgeExclude:
+  - '@cloudflare/workers-types'

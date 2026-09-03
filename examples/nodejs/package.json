@@ -1,23 +1,22 @@
 {
-  "name": "cloudflare-workers-example",
+  "name": "nodejs-example",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "drizzle-kit migrate && node dist/main.js"
+    "dev": "mkdir -p data && drizzle-kit migrate && node --env-file-if-exists=.env dist/main.js"
   },
   "dependencies": {
     "@block65/webcrypto-web-push": "workspace:*",
-    "@hono/node-server": "^1.13.7",
-    "better-sqlite3": "^11.7.0",
-    "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.38.2",
-    "hono": "^4.6.14"
+    "@hono/node-server": "^2.1.1",
+    "better-sqlite3": "^13.0.3",
+    "drizzle-orm": "1.0.0-rc.4",
+    "hono": "^4.13.5"
   },
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.0",
-    "@types/better-sqlite3": "^7.6.12",
-    "@types/node": "^22.10.2",
-    "drizzle-kit": "^0.30.1"
+    "@tsconfig/node26": "^26.0.1",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.4.1",
+    "drizzle-kit": "1.0.0-rc.4"
   }
 }
