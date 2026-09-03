@@ -1,16 +1,17 @@
-# webcrypto-web-push
+# @block65/webcrypto-web-push
 
-Monorepo for [`@block65/webcrypto-web-push`](./packages/web-push) — send
-notifications using the Web Push Protocol and Web Crypto APIs.
+Send notifications using the Web Push Protocol and Web Crypto APIs.
 
+This repository holds the package, its examples and its end to end tests.
 Installation and usage are documented in the
 [package README](./packages/web-push/README.md).
 
 ## Packages
 
-| Package                                    | Description                                          |
-| ------------------------------------------ | ---------------------------------------------------- |
-| [`packages/web-push`](./packages/web-push) | The published library, `@block65/webcrypto-web-push` |
+| Package                                    | Description                                    |
+| ------------------------------------------ | ---------------------------------------------- |
+| [`packages/web-push`](./packages/web-push) | The published library                          |
+| [`e2e`](./e2e)                             | Real browsers against their real push services |
 
 ## Examples
 

@@ -16,16 +16,16 @@ Subscription endpoints must be `https`.
 
 ## Installation
 
-Using yarn:
-
-```
-yarn add @block65/webcrypto-web-push
-```
-
 Using pnpm:
 
 ```
 pnpm add @block65/webcrypto-web-push
+```
+
+Using npm:
+
+```
+npm install @block65/webcrypto-web-push
 ```
 
 ## Configuration
