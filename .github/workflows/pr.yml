@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: ['canary', 'master']
 
+# checkout is all either job does with the token
+permissions:
+  contents: read
+
 jobs:
   test:
     strategy:

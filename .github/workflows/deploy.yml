@@ -5,6 +5,10 @@ on:
   release:
     types: [published]
 
+# npm is authenticated with NODE_AUTH_TOKEN, not the github token
+permissions:
+  contents: read
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
