@@ -1,6 +1,5 @@
 type JsonPrimitive = string | number | boolean | null;
 
-// anything JSON.stringify can round-trip
 type Jsonifiable =
   | JsonPrimitive
   | { toJSON(): Jsonifiable }
