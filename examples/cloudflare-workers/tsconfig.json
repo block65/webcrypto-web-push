@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node22",
+  "extends": "@tsconfig/node26",
   "compilerOptions": {
     "noEmit": true,
     "types": ["@cloudflare/workers-types"]

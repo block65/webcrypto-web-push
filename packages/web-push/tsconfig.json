@@ -1,6 +1,7 @@
 {
-  "extends": "@tsconfig/node22",
+  "extends": ["@tsconfig/node22", "@tsconfig/strictest"],
   "compilerOptions": {
+    "lib": ["es2024", "dom"],
     "outDir": "./dist",
     "composite": true,
     "types": [] /* attempt to be isomorphic */

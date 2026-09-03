@@ -2,15 +2,16 @@
 
 .PHONY: build
 build: node_modules
-	pnpm exec tsc -b
+	pnpm exec tsc -b packages/web-push
 
 .PHONY: dev
 dev: node_modules
-	pnpm exec tsc -b -w
+	pnpm exec tsc -b packages/web-push -w
 
 .PHONY: clean
 clean: node_modules
-	pnpm exec tsc -b --clean
+	pnpm exec tsc -b packages/web-push --clean
+	rm -rf packages/web-push/dist
 
 .PHONY: distclean
 distclean: clean

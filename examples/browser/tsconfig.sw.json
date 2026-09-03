@@ -3,7 +3,9 @@
 
   "extends": ["@tsconfig/vite-react", "@tsconfig/strictest"],
   "compilerOptions": {
-    "types": ["vite-plugin-pwa/client"]
+    "lib": ["ES2023", "WebWorker"],
+    "types": ["vite-plugin-pwa/client"],
+    "tsBuildInfoFile": "./tsconfig.sw.tsbuildinfo"
   },
   "include": ["./public"]
 }

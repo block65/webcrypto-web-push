@@ -1,9 +1,0 @@
-{
-  "extends": "@tsconfig/node22",
-  "files": [],
-  "references": [
-    {
-      "path": "./packages/web-push"
-    }
-  ]
-}
