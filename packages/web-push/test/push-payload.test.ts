@@ -28,7 +28,7 @@ vi.mock(import('../lib/local-keys.js'), () => ({
 }));
 
 test('buildPushPayload', async () => {
-  vi.setSystemTime(new Date(2000, 1, 1, 13));
+  vi.setSystemTime(new Date(Date.UTC(2000, 1, 1, 13)));
 
   const requestInfo = await buildPushPayload(
     {

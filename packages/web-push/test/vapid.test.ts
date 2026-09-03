@@ -4,7 +4,7 @@ import { subscriptions } from './fixtures/fixtures.js';
 import { insecureVapid } from './fixtures/vapid.js';
 
 test('Headers', async () => {
-  vi.setSystemTime(new Date(2000, 1, 1, 13));
+  vi.setSystemTime(new Date(Date.UTC(2000, 1, 1, 13)));
 
   const { headers } = await vapidHeaders(subscriptions.chrome, insecureVapid);
 
