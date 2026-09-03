@@ -2,32 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>webcrypto-web-push e2e</title>
+    <title>waiting</title>
   </head>
   <body>
     <script>
-      // the push arrives after the subscription is handed back, so the
-      // listener has to be attached before the test sends anything
-      window.pushed = new Promise((resolve) => {
-        navigator.serviceWorker.addEventListener('message', (event) =>
-          resolve(event.data),
-        );
+      // the title is how the test observes what the worker decrypted. it has to
+      // be listening before anything is sent
+      navigator.serviceWorker.addEventListener('message', (event) => {
+        document.title = event.data;
       });
-
-      window.subscribe = async (publicKey) => {
-        const registration = await navigator.serviceWorker.register('/sw.js');
-        await navigator.serviceWorker.ready;
-
-        const subscription = await registration.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey: Uint8Array.from(
-            atob(publicKey.replace(/-/g, '+').replace(/_/g, '/')),
-            (c) => c.charCodeAt(0),
-          ),
-        });
-
-        return subscription.toJSON();
-      };
     </script>
   </body>
 </html>
