@@ -1,27 +1,17 @@
-import { encodeLength } from './utils.js';
+import { stringToUint8Array } from 'uint8array-extras';
 
-export function createInfo(
+// RFC 8291 §3.4
+export function createKeyInfo(
   clientPublic: Uint8Array,
   serverPublic: Uint8Array,
-  type: 'aesgcm' | 'nonce' | 'auth',
 ) {
   return new Uint8Array([
-    ...new TextEncoder().encode(`Content-Encoding: ${type}\0`),
-    ...new TextEncoder().encode('P-256\0'),
-    ...encodeLength(clientPublic.byteLength),
+    ...stringToUint8Array('WebPush: info\0'),
     ...clientPublic,
-    ...encodeLength(serverPublic.byteLength),
     ...serverPublic,
   ]);
 }
 
-export function createInfo2(type: 'aesgcm' | 'nonce' | 'auth') {
-  return new Uint8Array([
-    ...new TextEncoder().encode(`Content-Encoding: ${type}\0`),
-    // ...new TextEncoder().encode('P-256\0'),
-    // ...encodeInt(clientPublic.byteLength),
-    // ...clientPublic,
-    // ...encodeInt(serverPublic.byteLength),
-    // ...serverPublic,
-  ]);
+export function createInfo(type: 'aes128gcm' | 'nonce') {
+  return stringToUint8Array(`Content-Encoding: ${type}\0`);
 }

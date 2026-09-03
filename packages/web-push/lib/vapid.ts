@@ -1,5 +1,6 @@
-import { sign, decodeBase64Url, encodeBase64Url } from './cf-jwt/main.js';
-import { crypto } from './isomorphic-crypto.js';
+import { base64ToUint8Array } from 'uint8array-extras';
+import { encodeBase64Url } from './base64.js';
+import { sign } from './jwt.js';
 import type { PushSubscription } from './types.js';
 import { invariant } from './utils.js';
 
@@ -19,7 +20,15 @@ export async function vapidHeaders(
   invariant(vapid.privateKey, 'Vapid private key is empty');
   invariant(vapid.publicKey, 'Vapid public key is empty');
 
-  const vapidPublicKeyBytes = decodeBase64Url(vapid.publicKey);
+  const endpoint = new URL(subscription.endpoint);
+
+  // RFC 8030 §2 push resources are https
+  invariant(
+    endpoint.protocol === 'https:',
+    `Subscription endpoint is not https: ${endpoint.protocol}`,
+  );
+
+  const vapidPublicKeyBytes = base64ToUint8Array(vapid.publicKey);
 
   const publicKey = await crypto.subtle.importKey(
     'jwk',
@@ -40,21 +49,17 @@ export async function vapidHeaders(
 
   const jwt = await sign(
     {
-      aud: new URL(subscription.endpoint).origin,
+      aud: endpoint.origin,
       exp: Math.floor(Date.now() / 1000) + 12 * 60 * 60,
       sub: vapid.subject,
     },
     publicKey,
-    {
-      algorithm: 'ES256',
-    },
   );
 
+  // RFC 8292 §3.1
   return {
     headers: {
-      authorization: `WebPush ${jwt}`,
-      'crypto-key': `p256ecdsa=${vapid.publicKey}`,
+      authorization: `vapid t=${jwt}, k=${vapid.publicKey}`,
     },
-    // publicJwk,
   };
 }

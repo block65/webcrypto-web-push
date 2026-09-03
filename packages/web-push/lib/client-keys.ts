@@ -1,30 +1,35 @@
-import { decodeBase64Url, encodeBase64Url } from './cf-jwt/base64.js';
-import { crypto } from './isomorphic-crypto.js';
+import { base64ToUint8Array } from 'uint8array-extras';
 import type { PushSubscription } from './types.js';
+import { invariant } from './utils.js';
 
 export async function deriveClientKeys(sub: PushSubscription) {
-  const publicBytes = decodeBase64Url(sub.keys.p256dh);
+  const bytes = base64ToUint8Array(sub.keys.p256dh);
+  const authSecretBytes = base64ToUint8Array(sub.keys.auth);
 
-  const publicJwk: JsonWebKey = {
-    kty: 'EC',
-    crv: 'P-256',
-    x: encodeBase64Url(publicBytes.slice(1, 33)),
-    y: encodeBase64Url(publicBytes.slice(33, 65)),
-    ext: true,
-  };
+  // ANSI X9.62 point encoding - 0x04 for uncompressed
+  invariant(
+    bytes.byteLength === 65 && bytes[0] === 0x04,
+    'Subscription p256dh is not an uncompressed P-256 point',
+  );
+
+  // RFC 8291 §3.2
+  invariant(
+    authSecretBytes.byteLength === 16,
+    'Subscription auth secret is not 16 bytes',
+  );
 
   return {
-    publicBytes: new Uint8Array(publicBytes),
+    publicKeyBytes: bytes,
     publicKey: await crypto.subtle.importKey(
-      'jwk',
-      publicJwk,
+      'raw',
+      bytes,
       {
         name: 'ECDH',
         namedCurve: 'P-256',
       },
-      true,
+      false,
       [],
     ),
-    authSecretBytes: decodeBase64Url(sub.keys.auth),
+    authSecretBytes,
   };
 }

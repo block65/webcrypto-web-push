@@ -1,12 +1,6 @@
-import { crypto } from './isomorphic-crypto.js';
+import { concatUint8Arrays } from 'uint8array-extras';
 
-function createHMAC(data: ArrayBuffer) {
-  if (data.byteLength === 0) {
-    return {
-      hash: () => Promise.resolve(new ArrayBuffer(32)),
-    };
-  }
-
+function createHMAC(data: BufferSource) {
   const keyPromise = crypto.subtle.importKey(
     'raw',
     data,
@@ -14,37 +8,40 @@ function createHMAC(data: ArrayBuffer) {
       name: 'HMAC',
       hash: 'SHA-256',
     },
-    true,
+    false,
     ['sign'],
   );
 
   return {
-    hash: async (input: ArrayBuffer) => {
+    hash: async (input: BufferSource) => {
       const k = await keyPromise;
       return crypto.subtle.sign('HMAC', k, input);
     },
   };
 }
 
-export async function hkdf(salt: ArrayBuffer, ikm: ArrayBuffer) {
+export async function hkdf(salt: BufferSource, ikm: BufferSource) {
   const prkhPromise = createHMAC(salt)
     .hash(ikm)
     .then((prk) => createHMAC(prk));
 
   return {
-    extract: async (info: ArrayBuffer, len: number) => {
-      const input = new Uint8Array([
-        ...new Uint8Array(info),
-        ...new Uint8Array([1]),
-      ]);
+    extract: async (info: Uint8Array, len: number) => {
       const prkh = await prkhPromise;
-      const hash = await prkh.hash(input);
-      // if (hash.byteLength < len) {
-      //   throw new Error(
-      //     `Unexpected hash length ${hash.byteLength} is less than ${len}`,
-      //   );
-      // }
-      return hash.slice(0, len);
+
+      // RFC 5869 expand, T(n) = HMAC(prk, T(n-1) || info || n)
+      const blocks = await Array.from(
+        { length: Math.ceil(len / 32) },
+        (_, i) => i,
+      ).reduce<Promise<Uint8Array[]>>(async (acc, i) => {
+        const previous = await acc;
+        const hash = await prkh.hash(
+          new Uint8Array([...(previous.at(-1) ?? []), ...info, i + 1]),
+        );
+        return [...previous, new Uint8Array(hash)];
+      }, Promise.resolve([]));
+
+      return concatUint8Arrays(blocks).slice(0, len);
     },
   };
 }

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>waiting</title>
+    <!-- stops the browser requesting one and logging a 404 -->
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <script>
+      // the title is how the test observes what the worker decrypted. it has to
+      // be listening before anything is sent
+      navigator.serviceWorker.addEventListener('message', (event) => {
+        document.title = event.data;
+      });
+    </script>
+  </body>
+</html>

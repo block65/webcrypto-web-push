@@ -1,4 +1,14 @@
-import type { Jsonifiable, RequireAtLeastOne } from 'type-fest';
+type JsonPrimitive = string | number | boolean | null;
+
+type Jsonifiable =
+  | JsonPrimitive
+  | { toJSON(): Jsonifiable }
+  | readonly Jsonifiable[]
+  | { [key: string]: Jsonifiable };
+
+type RequireAtLeastOne<T> = {
+  [K in keyof T]-?: Required<Pick<T, K>> & Partial<Omit<T, K>>;
+}[keyof T];
 
 export type PushMessage<T extends Jsonifiable = Jsonifiable> = {
   data: T;

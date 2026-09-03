@@ -1,9 +1,10 @@
 {
-  "extends": "@tsconfig/node20",
+  "extends": ["@tsconfig/node22", "@tsconfig/strictest"],
   "compilerOptions": {
+    "lib": ["es2024", "dom"],
     "outDir": "./dist",
     "composite": true,
-    "types": [] /* attempt to be isomorhpic */
+    "types": [] /* attempt to be isomorphic */
   },
   "include": ["./lib"],
   "exclude": ["./dist"]

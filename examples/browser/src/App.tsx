@@ -1,26 +1,7 @@
-import {
-  Block,
-  Button,
-  Code,
-  DesignSystem,
-  Heading,
-  Panel,
-  Strong,
-  Text,
-  interFontThemeClassName,
-} from '@block65/react-design-system';
 import type { PushMessage } from '@block65/webcrypto-web-push';
-import { useCallback, useState, type FC } from 'react';
+import { type FC, useCallback, useState } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
-
-function invariant<T>(
-  condition: T | undefined | null | '' | 0 | false,
-  message: string,
-): asserts condition {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
+import { invariant } from './utils.ts';
 
 async function getSubscription(
   registration: ServiceWorkerRegistration | undefined,
@@ -144,55 +125,54 @@ export const App: FC = () => {
   }, [subscription]);
 
   return (
-    <DesignSystem
-      flexDirection="column"
-      className={interFontThemeClassName}
-      style={{ minHeight: '100%' }}
-    >
-      <Block
-        flexGrow
-        alignSelf="center"
-        margin="10"
-        style={{ maxWidth: '30rem' }}
-      >
-        <Heading level="2">Web Push</Heading>
+    <div className="flex-grow mx-auto m-15 max-w-screen-sm gap-4 flex flex-col">
+      <h1 className="my-4 font-semibold text-xl">Web Push Example</h1>
 
-        <Panel>
-          <Strong>Server Public Key</Strong>
-          <Code>{publicKey}</Code>
-        </Panel>
+      <div className="flex flex-col">
+        <b>Server Public Key</b>
+        <code className="font-mono fg">{publicKey}</code>
+      </div>
 
-        <Panel>
-          <Text>
-            <Strong>Service Worker Registered</Strong>: {String(!!registration)}
-          </Text>
+      <div className="flex flex-col gap-4">
+        <p className="flex flex-row gap-1">
+          <span className="font-semibold">Service Worker Registered:</span>
+          {registration ? 'Yes' : <span className="text-orange-600 ">No</span>}
+        </p>
 
-          <Text>
-            <Strong>Subscribed</Strong>: {String(!!subscription)}
-          </Text>
+        <p className="flex flex-row gap-1">
+          <span className="font-semibold">Subscribed:</span>{' '}
+          {subscription ? 'Yes' : 'No'}
+        </p>
 
-          <Button
-            busy={subscribeBusy}
+        <div className="flex flex-row gap-4">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded cursor-pointer flex-grow disabled:opacity-50"
+            type="button"
             disabled={!registration || !!subscription}
             onClick={() => subscribe()}
           >
-            Subscribe
-          </Button>
-          <Button
+            {subscribeBusy ? 'busy' : 'Subscribe'}
+          </button>
+
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded cursor-pointer flex-grow disabled:opacity-50"
+            type="button"
             disabled={!registration || !subscription}
             onClick={() => unsubscribe()}
           >
             Unsubscribe
-          </Button>
-        </Panel>
+          </button>
+        </div>
 
-        <Button
+        <button
+          className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded cursor-pointer flex-grow disabled:opacity-50"
+          type="button"
           disabled={!registration || !subscription}
           onClick={() => send()}
         >
           Send Myself A Push Message
-        </Button>
-      </Block>
-    </DesignSystem>
+        </button>
+      </div>
+    </div>
   );
 };

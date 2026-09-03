@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "promise", "import", "oxc"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "typescript/no-non-null-assertion": "error",
+    "no-nested-ternary": "error",
+    "unicorn/no-nested-ternary": "error",
+    "import/first": "error",
+    "import/no-duplicates": "error",
+    "import/no-unassigned-import": ["warn", { "allow": ["**/*.css"] }],
+    "import/no-named-as-default": "error",
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "unicorn/consistent-function-scoping": "warn",
+    "curly": ["error", "all"]
+  },
+  "ignorePatterns": ["**/dist", "**/dev-dist", "**/.wrangler"]
+}

@@ -1,0 +1,36 @@
+# @block65/webcrypto-web-push
+
+Send notifications using the Web Push Protocol and Web Crypto APIs.
+
+This repository holds the package, its examples and its end to end tests.
+Installation and usage are documented in the
+[package README](./packages/web-push/README.md).
+
+## Packages
+
+| Package                                    | Description                                    |
+| ------------------------------------------ | ---------------------------------------------- |
+| [`packages/web-push`](./packages/web-push) | The published library                          |
+| [`e2e`](./e2e)                             | Real browsers against their real push services |
+
+## Examples
+
+| Example                                                        | Description                                         |
+| -------------------------------------------------------------- | --------------------------------------------------- |
+| [`examples/browser`](./examples/browser)                       | Vite and React app that subscribes to notifications |
+| [`examples/cloudflare-workers`](./examples/cloudflare-workers) | Hono worker that stores subscriptions in D1         |
+| [`examples/nodejs`](./examples/nodejs)                         | Hono server that stores subscriptions in SQLite     |
+
+## Development
+
+```
+make          # build
+make test     # typecheck, unit tests and smoketest
+make e2e      # real browsers against real push services, see e2e/README.md
+make lint     # oxlint
+make format   # oxfmt
+```
+
+## License
+
+MIT. See [LICENSE.md](./packages/web-push/LICENSE.md).

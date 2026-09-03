@@ -2,24 +2,20 @@
 
 .PHONY: build
 build: node_modules
-	pnpm exec tsc -b
+	pnpm exec tsc -b packages/web-push
 
 .PHONY: dev
 dev: node_modules
-	pnpm exec tsc -b -w
+	pnpm exec tsc -b packages/web-push -w
 
 .PHONY: clean
 clean: node_modules
-	pnpm exec tsc -b --clean
+	pnpm exec tsc -b packages/web-push --clean
+	rm -rf packages/web-push/dist
 
 .PHONY: distclean
 distclean: clean
 	rm -rf node_modules
-
-.PHONY: lint
-lint: node_modules
-	pnpm exec eslint .
-	pnpm exec prettier --check .
 
 node_modules: package.json
 	pnpm install
@@ -28,8 +24,14 @@ node_modules: package.json
 test: node_modules
 	pnpm run -r test
 
-.PHONY: pretty
-pretty: node_modules
-	pnpm exec eslint --fix . || true
-	pnpm exec prettier --write .
-	pnpx sort-package-json package.json packages/*/package.json examples/*/package.json
+.PHONY: e2e
+e2e: node_modules build
+	pnpm --filter e2e run e2e
+
+.PHONY: format
+format: node_modules
+	pnpm exec oxfmt
+
+.PHONY: lint
+lint: node_modules
+	pnpm exec oxlint --fix

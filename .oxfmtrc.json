@@ -1,0 +1,19 @@
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 80,
+  "singleQuote": true,
+  "ignorePatterns": [
+    "**/dist",
+    "**/node_modules",
+    "**/.wrangler",
+    "**/dev-dist",
+    "**/*.html"
+  ],
+  "sortPackageJson": {
+    "sortScripts": true
+  },
+  "sortImports": {
+    "newlinesBetween": false
+  }
+}

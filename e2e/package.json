@@ -1,0 +1,17 @@
+{
+  "name": "e2e",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@block65/webcrypto-web-push": "workspace:*",
+    "@hono/node-server": "catalog:",
+    "@playwright/test": "^1.62.1",
+    "@tsconfig/node22": "catalog:",
+    "@types/node": "catalog:",
+    "hono": "catalog:"
+  }
+}

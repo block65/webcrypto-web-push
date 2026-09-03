@@ -1,0 +1,60 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "a34302cc-7582-4573-96f4-807d1a7c8f39",
+  "prevIds": ["00000000-0000-0000-0000-000000000000"],
+  "ddl": [
+    {
+      "name": "subscriptions",
+      "entityType": "tables"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "subscriptions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "endpoint",
+      "entityType": "columns",
+      "table": "subscriptions"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "expirationTime",
+      "entityType": "columns",
+      "table": "subscriptions"
+    },
+    {
+      "type": "jsonb",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "keys",
+      "entityType": "columns",
+      "table": "subscriptions"
+    },
+    {
+      "columns": ["id"],
+      "nameExplicit": false,
+      "name": "subscriptions_pk",
+      "table": "subscriptions",
+      "entityType": "pks"
+    }
+  ],
+  "renames": []
+}

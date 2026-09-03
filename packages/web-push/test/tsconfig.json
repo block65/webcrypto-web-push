@@ -1,11 +1,10 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
+    "composite": false,
     "noEmit": true,
-    "composite": true
+    "tsBuildInfoFile": "./tsconfig.tsbuildinfo"
   },
-  "files": ["./vitest.config.ts"],
   "include": ["."],
   "references": [
     {

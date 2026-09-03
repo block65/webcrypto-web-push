@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`buildPushPayload 1`] = `"4CQCKEyyOT_LysC17rsMXQAAEABBBO6-TCHINeAfMhq44SQLnR-3NZnAfwe2n-CjcESbHlOcJkx_8JqbcwRJMd5zrZouJbIUe2AkFnhoDavSymNyOA0"`;
+
+exports[`buildPushPayload 2`] = `"post"`;
+
+exports[`buildPushPayload 3`] = `
+{
+  "content-encoding": "aes128gcm",
+  "content-length": "4096",
+  "content-type": "application/octet-stream",
+  "ttl": "60",
+}
+`;
+
+exports[`buildPushPayload 4`] = `
+[
+  "vapid t=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjk0OTQxMDAwMCwiYXVkIjoiaHR0cHM6Ly9wdXNoLmV4YW1wbGUuY29tIiwiZXhwIjo5NDk0NTMyMDAsInN1YiI6Im1haWx0bzp0ZXN0QGV4YW1wbGUuY29tIn0.",
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjk0OTQxMDAwMCwiYXVkIjoiaHR0cHM6Ly9wdXNoLmV4YW1wbGUuY29tIiwiZXhwIjo5NDk0NTMyMDAsInN1YiI6Im1haWx0bzp0ZXN0QGV4YW1wbGUuY29tIn0.",
+]
+`;

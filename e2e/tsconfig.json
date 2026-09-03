@@ -1,0 +1,10 @@
+{
+  "extends": ["@tsconfig/node22", "@tsconfig/strictest"],
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["es2024", "dom"],
+    "allowImportingTsExtensions": true
+  },
+  "include": ["."],
+  "exclude": ["./public"]
+}
