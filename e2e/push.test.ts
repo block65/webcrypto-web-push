@@ -20,6 +20,19 @@ for (const [name, launch] of Object.entries(browsers)) {
 
     const fixture = await serveFixture();
 
+    // the service worker shares the context, so this covers the console it
+    // decrypts in as well as the page. firefox only reports the page
+    const problems: string[] = [];
+
+    context.on('console', (message) => {
+      if (message.type() === 'error' || message.type() === 'warning') {
+        problems.push(`${message.type()}: ${message.text()}`);
+      }
+    });
+    context.on('weberror', (error) => {
+      problems.push(`uncaught: ${error.error().message}`);
+    });
+
     try {
       const page = await context.newPage();
       await page.goto(fixture.url);
@@ -65,6 +78,8 @@ for (const [name, launch] of Object.entries(browsers)) {
       // the subscriber decrypting it is the whole point. a 201 only means the
       // push service accepted the request
       await expect(page).toHaveTitle(message);
+
+      expect(problems).toEqual([]);
     } finally {
       await context.close();
       await fixture.close();
