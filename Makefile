@@ -25,9 +25,8 @@ test: node_modules
 
 .PHONY: format
 format: node_modules
-	pnpm exec biome format . --fix
+	pnpm exec oxfmt
 
 .PHONY: lint
 lint: node_modules
-	pnpm exec biome lint . --fix
-	pnpx sort-package-json package.json packages/*/package.json examples/*/package.json
+	pnpm exec oxlint --fix
