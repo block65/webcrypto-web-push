@@ -1,4 +1,4 @@
-import { chromium, firefox, type BrowserContext } from 'playwright';
+import { chromium, firefox, type BrowserContext } from '@playwright/test';
 
 type Launch = (profileDir: string) => Promise<BrowserContext>;
 

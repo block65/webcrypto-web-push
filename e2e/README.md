@@ -24,3 +24,6 @@ pnpm exec playwright install firefox
 ```
 
 A browser that is not installed skips rather than fails.
+
+The playwright runner drives it, so `pnpm exec playwright test --ui` and the
+usual reporters work.
