@@ -25,4 +25,7 @@ jobs:
 
       - run: make
 
-      - run: pnpm publish -r --filter @block65/webcrypto-web-push --access=public --no-git-checks --provenance
+      # the trusted publisher grants "npm stage publish", so this uploads for
+      # review rather than going live. approve it with pnpm stage approve.
+      # provenance is attached automatically when publishing over oidc
+      - run: pnpm stage publish -r --filter @block65/webcrypto-web-push --access public
