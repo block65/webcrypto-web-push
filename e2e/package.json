@@ -1,0 +1,15 @@
+{
+  "name": "e2e",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "e2e": "vitest run"
+  },
+  "devDependencies": {
+    "@block65/webcrypto-web-push": "workspace:*",
+    "@types/node": "^26.4.1",
+    "playwright": "^1.60.0",
+    "vitest": "^4.1.11"
+  }
+}

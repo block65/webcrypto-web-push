@@ -1,0 +1,9 @@
+{
+  "extends": ["@tsconfig/node26", "@tsconfig/strictest"],
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["es2025", "dom"]
+  },
+  "include": ["."],
+  "exclude": ["./public"]
+}

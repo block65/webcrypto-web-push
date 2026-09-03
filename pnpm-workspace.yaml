@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
   - 'examples/*'
+  - 'e2e'
   - '!**/test/**'
 allowBuilds:
   better-sqlite3: false

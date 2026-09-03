@@ -25,6 +25,7 @@ Installation and usage are documented in the
 ```
 make          # build
 make test     # typecheck, unit tests and smoketest
+make e2e      # real browsers against real push services, see e2e/README.md
 make lint     # oxlint
 make format   # oxfmt
 ```

@@ -24,6 +24,10 @@ node_modules: package.json
 test: node_modules
 	pnpm run -r test
 
+.PHONY: e2e
+e2e: node_modules build
+	pnpm --filter e2e run e2e
+
 .PHONY: format
 format: node_modules
 	pnpm exec oxfmt
