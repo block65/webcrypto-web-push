@@ -7,4 +7,3 @@ coverage
 *.tsbuildinfo
 
 sqlite.db
-**/migrations/meta/

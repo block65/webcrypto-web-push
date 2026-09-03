@@ -1,3 +1,5 @@
+declare const self: ServiceWorkerGlobalScope;
+
 self.addEventListener('push', async (event) => {
   // Keep the service worker alive until the notification is shown.
   event.waitUntil(

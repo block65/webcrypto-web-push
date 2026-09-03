@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import {
   buildPushPayload,
   type PushSubscription,
@@ -30,9 +29,9 @@ app.use(
 );
 app.use(logger());
 
-const db = drizzle(
-  new Database(new URL('../data/sqlite.db', import.meta.url).pathname),
-);
+const db = drizzle({
+  client: new Database(new URL('../data/sqlite.db', import.meta.url).pathname),
+});
 
 await migrate(db, {
   migrationsFolder: new URL('../migrations', import.meta.url).pathname,
