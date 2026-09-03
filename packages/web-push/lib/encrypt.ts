@@ -26,7 +26,7 @@ export async function encryptNotification(
   subscription: PushSubscription,
   plaintext: Uint8Array,
   options: EncryptOptions = {},
-): Promise<Uint8Array> {
+): Promise<Uint8Array<ArrayBuffer>> {
   invariant(
     plaintext.byteLength <= maxPlaintextSize,
     `Payload is ${plaintext.byteLength} bytes, the maximum is ${maxPlaintextSize}`,
