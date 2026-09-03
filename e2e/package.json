@@ -4,12 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "e2e": "vitest run"
+    "e2e": "node --test"
   },
   "devDependencies": {
     "@block65/webcrypto-web-push": "workspace:*",
-    "@types/node": "^26.4.1",
-    "playwright": "^1.60.0",
-    "vitest": "^4.1.11"
+    "@hono/node-server": "catalog:",
+    "@tsconfig/node22": "catalog:",
+    "@types/node": "catalog:",
+    "hono": "catalog:",
+    "playwright": "^1.62.1"
   }
 }

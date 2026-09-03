@@ -4,13 +4,34 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@hono/node-server':
+      specifier: ^2.1.1
+      version: 2.1.1
+    '@tsconfig/node22':
+      specifier: ^22.0.6
+      version: 22.0.6
+    '@types/node':
+      specifier: ^22.19.1
+      version: 22.20.1
+    drizzle-kit:
+      specifier: 1.0.0-rc.4
+      version: 1.0.0-rc.4
+    drizzle-orm:
+      specifier: 1.0.0-rc.4
+      version: 1.0.0-rc.4
+    hono:
+      specifier: ^4.13.5
+      version: 4.13.5
+
 importers:
 
   .:
     devDependencies:
-      '@tsconfig/node26':
-        specifier: ^26.0.1
-        version: 26.0.1
+      '@tsconfig/node22':
+        specifier: 'catalog:'
+        version: 22.0.6
       '@tsconfig/strictest':
         specifier: ^2.0.8
         version: 2.0.8
@@ -32,15 +53,21 @@ importers:
       '@block65/webcrypto-web-push':
         specifier: workspace:*
         version: link:../packages/web-push
+      '@hono/node-server':
+        specifier: 'catalog:'
+        version: 2.1.1(hono@4.13.5)
+      '@tsconfig/node22':
+        specifier: 'catalog:'
+        version: 22.0.6
       '@types/node':
-        specifier: ^26.4.1
-        version: 26.4.1
+        specifier: 'catalog:'
+        version: 22.20.1
+      hono:
+        specifier: 'catalog:'
+        version: 4.13.5
       playwright:
-        specifier: ^1.60.0
+        specifier: ^1.62.1
         version: 1.62.1
-      vitest:
-        specifier: ^4.1.11
-        version: 4.1.11(@types/node@26.4.1)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.37.0)(tsx@4.23.13)(yaml@2.6.1))
 
   examples/browser:
     dependencies:
@@ -85,20 +112,20 @@ importers:
         specifier: workspace:*
         version: link:../../packages/web-push
       drizzle-orm:
-        specifier: 1.0.0-rc.4
+        specifier: 'catalog:'
         version: 1.0.0-rc.4(@cloudflare/workers-types@5.20260903.1)(@types/better-sqlite3@9.6.0)(better-sqlite3@13.0.3)
       hono:
-        specifier: ^4.13.5
+        specifier: 'catalog:'
         version: 4.13.5
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^5.20260903.1
         version: 5.20260903.1
-      '@tsconfig/node26':
-        specifier: ^26.0.1
-        version: 26.0.1
+      '@tsconfig/node22':
+        specifier: 'catalog:'
+        version: 22.0.6
       drizzle-kit:
-        specifier: 1.0.0-rc.4
+        specifier: 'catalog:'
         version: 1.0.0-rc.4
       wrangler:
         specifier: ^4.128.0
@@ -110,29 +137,29 @@ importers:
         specifier: workspace:*
         version: link:../../packages/web-push
       '@hono/node-server':
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1(hono@4.13.5)
       better-sqlite3:
         specifier: ^13.0.3
         version: 13.0.3
       drizzle-orm:
-        specifier: 1.0.0-rc.4
+        specifier: 'catalog:'
         version: 1.0.0-rc.4(@cloudflare/workers-types@5.20260903.1)(@types/better-sqlite3@9.6.0)(better-sqlite3@13.0.3)
       hono:
-        specifier: ^4.13.5
+        specifier: 'catalog:'
         version: 4.13.5
     devDependencies:
-      '@tsconfig/node26':
-        specifier: ^26.0.1
-        version: 26.0.1
+      '@tsconfig/node22':
+        specifier: 'catalog:'
+        version: 22.0.6
       '@types/better-sqlite3':
         specifier: ^9.6.0
         version: 9.6.0
       '@types/node':
-        specifier: ^26.4.1
-        version: 26.4.1
+        specifier: 'catalog:'
+        version: 22.20.1
       drizzle-kit:
-        specifier: 1.0.0-rc.4
+        specifier: 'catalog:'
         version: 1.0.0-rc.4
 
   packages/web-push:
@@ -142,7 +169,7 @@ importers:
         version: 1.5.0
     devDependencies:
       '@tsconfig/node22':
-        specifier: ^22.0.6
+        specifier: 'catalog:'
         version: 22.0.6
       vitest:
         specifier: ^4.1.11
@@ -2032,9 +2059,6 @@ packages:
   '@tsconfig/node22@22.0.6':
     resolution: {integrity: sha512-/5thavHAnWDZwH2H6eEn/T8pBEBhtuKaWGMslsj82kJfvzQgOgEMK7X4goBbIUjgVtAzPTtM9Ml64LA0uxO6Iw==}
 
-  '@tsconfig/node26@26.0.1':
-    resolution: {integrity: sha512-NQT8JUFDKeAIWpR1dakeF534msQAsoSLr1WpKdRDt3sCvk2fsFK3EVKUBG5xKYVamiRO6yTfniiyvCaqOGgn/g==}
-
   '@tsconfig/strictest@2.0.8':
     resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
 
@@ -2064,6 +2088,9 @@ packages:
 
   '@types/estree@1.0.9':
     resolution: {integrity: sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==}
+
+  '@types/node@22.20.1':
+    resolution: {integrity: sha512-EANqOCF9QFyra+4pfxUcX9STKJpCLjMbObVzljIJomAWSnuSIEAvyzEU53GaajbXJEgdh0iEcPL+DGvpUd4k1Q==}
 
   '@types/node@26.4.1':
     resolution: {integrity: sha512-k97ENvZWtvA6yqz5/FS6a7duDgOPEeOQOc2iKS/nY6mX6qJUKtLnWzQS+Xj6tXweyj6ZcTAK2Qecetnvi9nCLA==}
@@ -3570,6 +3597,9 @@ packages:
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
+
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
@@ -5284,8 +5314,6 @@ snapshots:
 
   '@tsconfig/node22@22.0.6': {}
 
-  '@tsconfig/node26@26.0.1': {}
-
   '@tsconfig/strictest@2.0.8': {}
 
   '@tsconfig/vite-react@8.1.1': {}
@@ -5327,6 +5355,10 @@ snapshots:
   '@types/deep-eql@4.0.2': {}
 
   '@types/estree@1.0.9': {}
+
+  '@types/node@22.20.1':
+    dependencies:
+      undici-types: 6.21.0
 
   '@types/node@26.4.1':
     dependencies:
@@ -6836,6 +6868,8 @@ snapshots:
       has-bigints: 1.0.2
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
+
+  undici-types@6.21.0: {}
 
   undici-types@8.3.0: {}
 

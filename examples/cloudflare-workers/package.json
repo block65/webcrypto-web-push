@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@block65/webcrypto-web-push": "workspace:*",
-    "drizzle-orm": "1.0.0-rc.4",
-    "hono": "^4.13.5"
+    "drizzle-orm": "catalog:",
+    "hono": "catalog:"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260903.1",
-    "@tsconfig/node26": "^26.0.1",
-    "drizzle-kit": "1.0.0-rc.4",
+    "@tsconfig/node22": "catalog:",
+    "drizzle-kit": "catalog:",
     "wrangler": "^4.128.0"
   }
 }
