@@ -22,8 +22,8 @@ catalogs:
       specifier: 1.0.0-rc.4
       version: 1.0.0-rc.4
     hono:
-      specifier: ^4.13.5
-      version: 4.13.5
+      specifier: ^4.13.11
+      version: 4.13.13
 
 importers:
 
@@ -55,7 +55,7 @@ importers:
         version: link:../packages/web-push
       '@hono/node-server':
         specifier: 'catalog:'
-        version: 2.1.1(hono@4.13.5)
+        version: 2.1.1(hono@4.13.13)
       '@playwright/test':
         specifier: ^1.62.1
         version: 1.62.1
@@ -67,7 +67,7 @@ importers:
         version: 26.4.1
       hono:
         specifier: 'catalog:'
-        version: 4.13.5
+        version: 4.13.13
 
   examples/browser:
     dependencies:
@@ -116,7 +116,7 @@ importers:
         version: 1.0.0-rc.4(@cloudflare/workers-types@5.20260903.1)(@types/better-sqlite3@9.6.0)(better-sqlite3@13.0.3)
       hono:
         specifier: 'catalog:'
-        version: 4.13.5
+        version: 4.13.13
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^5.20260903.1
@@ -138,7 +138,7 @@ importers:
         version: link:../../packages/web-push
       '@hono/node-server':
         specifier: 'catalog:'
-        version: 2.1.1(hono@4.13.5)
+        version: 2.1.1(hono@4.13.13)
       better-sqlite3:
         specifier: ^13.0.3
         version: 13.0.3
@@ -147,7 +147,7 @@ importers:
         version: 1.0.0-rc.4(@cloudflare/workers-types@5.20260903.1)(@types/better-sqlite3@9.6.0)(better-sqlite3@13.0.3)
       hono:
         specifier: 'catalog:'
-        version: 4.13.5
+        version: 4.13.13
     devDependencies:
       '@tsconfig/node22':
         specifier: 'catalog:'
@@ -2823,8 +2823,8 @@ packages:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
 
-  hono@4.13.5:
-    resolution: {integrity: sha512-O6+/eCYRkzzzy0rPWwKLiGBR1nFuUPZynnwjxN1MBA62NNqbT0wQEzQyK2gSO5yDIDB336sXQleAhOHrzlYyKw==}
+  hono@4.13.13:
+    resolution: {integrity: sha512-CQ46U0ZkAGmbT/4UxdzzGJpacP2IeKgY4a5/tOI9AABbpOMfK739wfDXmv1usCk+3RkKj1hQy4/fjhiwa2xlrA==}
     engines: {node: '>=16.9.0'}
 
   idb@7.1.1:
@@ -3273,10 +3273,6 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@4.0.2:
-    resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
-    engines: {node: '>=12'}
-
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
@@ -3451,8 +3447,8 @@ packages:
   smob@1.5.0:
     resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
 
-  source-map-js@1.2.1:
-    resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
+  source-map-js@1.2.2:
+    resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}
     engines: {node: '>=0.10.0'}
 
   source-map-support@0.5.21:
@@ -4785,9 +4781,9 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@hono/node-server@2.1.1(hono@4.13.5)':
+  '@hono/node-server@2.1.1(hono@4.13.13)':
     dependencies:
-      hono: 4.13.5
+      hono: 4.13.13
 
   '@img/colour@1.1.0': {}
 
@@ -5247,7 +5243,7 @@ snapshots:
       jiti: 2.7.0
       lightningcss: 1.32.0
       magic-string: 0.30.21
-      source-map-js: 1.2.1
+      source-map-js: 1.2.2
       tailwindcss: 4.3.3
 
   '@tailwindcss/oxide-android-arm64@4.3.3':
@@ -5894,9 +5890,9 @@ snapshots:
 
   fast-uri@3.0.3: {}
 
-  fdir@6.4.2(picomatch@4.0.2):
+  fdir@6.4.2(picomatch@4.0.7):
     optionalDependencies:
-      picomatch: 4.0.2
+      picomatch: 4.0.7
 
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
@@ -6018,7 +6014,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono@4.13.5: {}
+  hono@4.13.13: {}
 
   idb@7.1.1: {}
 
@@ -6408,8 +6404,6 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  picomatch@4.0.2: {}
-
   picomatch@4.0.7: {}
 
   playwright-core@1.62.1: {}
@@ -6426,7 +6420,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.18
       picocolors: 1.1.1
-      source-map-js: 1.2.1
+      source-map-js: 1.2.2
 
   pretty-bytes@5.6.0: {}
 
@@ -6672,7 +6666,7 @@ snapshots:
 
   smob@1.5.0: {}
 
-  source-map-js@1.2.1: {}
+  source-map-js@1.2.2: {}
 
   source-map-support@0.5.21:
     dependencies:
@@ -6775,8 +6769,8 @@ snapshots:
 
   tinyglobby@0.2.10:
     dependencies:
-      fdir: 6.4.2(picomatch@4.0.2)
-      picomatch: 4.0.2
+      fdir: 6.4.2(picomatch@4.0.7)
+      picomatch: 4.0.7
 
   tinyglobby@0.2.17:
     dependencies:
