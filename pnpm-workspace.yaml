@@ -9,7 +9,7 @@ catalog:
   '@types/node': ^26.4.1
   drizzle-kit: 1.0.0-rc.4
   drizzle-orm: 1.0.0-rc.4
-  hono: ^4.13.5
+  hono: ^4.13.11
 allowBuilds:
   better-sqlite3: false
   esbuild: false
